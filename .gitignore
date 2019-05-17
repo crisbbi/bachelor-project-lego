@@ -1,0 +1,19 @@
+/bin/
+.metadata
+local.properties
+.settings/
+build.fxbuild
+# Eclipse Core
+.project
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Java annotation processor (APT)
+.factorypath
+
+# vscode launch.json settings
+*.vscode
