@@ -56,7 +56,7 @@
                                  <children>
                                     <ImageView fitHeight="70.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@pictures/linkerTrackVor.png" />
+                                          <Image url="@pictures/linkerTrackVor_transparent.png" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -65,7 +65,7 @@
                                  <children>
                                     <ImageView fitHeight="70.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@pictures/rechterTrackVor.png" />
+                                          <Image url="@pictures/rechterTrackVor_transparent.png" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -74,7 +74,7 @@
                                  <children>
                                     <ImageView fitHeight="70.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@pictures/linkerTrackZurueck.png" />
+                                          <Image url="@pictures/linkerTrackZurueck_transparent.png" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -83,7 +83,7 @@
                                  <children>
                                     <ImageView fitHeight="70.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@pictures/rechterTrackZurueck.png" />
+                                          <Image url="@pictures/rechterTrackZurueck_transparent.png" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -114,7 +114,7 @@
                                  <children>
                                     <ImageView fitHeight="70.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@pictures/licht.png" />
+                                          <Image url="@pictures/licht_transparent.png" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -125,7 +125,7 @@
                            <children>
                               <ImageView fitHeight="90.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@pictures/notAus.png" />
+                                    <Image url="@pictures/notAus_transparent.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -136,7 +136,7 @@
                                  <children>
                                     <ImageView fitHeight="70.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@pictures/schaufel.png" />
+                                          <Image url="@pictures/schaufel_transparent.png" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -153,12 +153,12 @@
                            <children>
                               <ImageView fitHeight="80.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@pictures/armDrehenUhrzeiger.png" />
+                                    <Image url="@pictures/armDrehenUhrzeiger_transparent.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="80.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@pictures/armDrehenGegenUhrzeiger.png" />
+                                    <Image url="@pictures/armDrehenGegenUhrzeiger_transparent.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -170,12 +170,12 @@
                            <children>
                               <ImageView fitHeight="80.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@pictures/armHeben.png" />
+                                    <Image url="@pictures/armHeben_transparent.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="80.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@pictures/armSenken.png" />
+                                    <Image url="@pictures/armSenken_transparent.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -192,12 +192,12 @@
                      <children>
                         <ImageView fitHeight="75.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@pictures/einstellungen.png" />
+                              <Image url="@pictures/einstellungen_transparent.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="75.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@pictures/ki.png" />
+                              <Image url="@pictures/ki_transparent.png" />
                            </image>
                         </ImageView>
                      </children></VBox>
