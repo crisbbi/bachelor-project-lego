@@ -12,16 +12,7 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
-		try {
-			StackPane root = (StackPane) FXMLLoader.load(getClass().getResource("Sample.fxml"));
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setMaximized(true);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		SampleController controller = new SampleController(primaryStage);
 	}
 	
 	public static void main(String[] args) {
