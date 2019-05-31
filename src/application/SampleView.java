@@ -32,23 +32,24 @@ public class SampleView extends StackPane {
 	}
 	
 	private void initImageViews() {
-		initImageView("pictures/linkerTrackVor_1.png", linkerTrackVorImageView);
-		initImageView("pictures/Bilder alt/linkerTrackZurueck.png", linkerTrackZurueckImageView);
-		initImageView("pictures/Bilder alt/rechterTrackVor.png", rechterTrackVorImageView);
-		initImageView("pictures/Bilder alt/rechterTrackZurueck.png", rechterTrackZurueckImageView);
-		initImageView("pictures/Bilder alt/licht.png", lichtImageView);
-		initImageView("pictures/Bilder alt/schaufel.png", schaufelRadImageView);
-		initImageView("pictures/Bilder alt/armDrehenUhrzeiger.png", drehenMitUhrzeigerImageView);
-		initImageView("pictures/Bilder alt/armHeben.png", armHebenImageView);
-		initImageView("pictures/Bilder alt/armSenken.png", armSenkenImageView);
-		initImageView("pictures/Bilder alt/einstellungen.png", einstellungenImageView);
-		initImageView("pictures/Bilder alt/ki.png", kiImageView);
-		initImageView("pictures/Bilder alt/notAus.png", notAusImageView);
+		linkerTrackVorImageView = initImageView("pictures/Bilder alt/linkerTrackVor.png", linkerTrackVorImageView);
+		linkerTrackZurueckImageView = initImageView("pictures/Bilder alt/linkerTrackZurueck.png", linkerTrackZurueckImageView);
+		rechterTrackVorImageView = initImageView("pictures/Bilder alt/rechterTrackVor.png", rechterTrackVorImageView);
+		rechterTrackZurueckImageView = initImageView("pictures/Bilder alt/rechterTrackZurueck.png", rechterTrackZurueckImageView);
+		lichtImageView = initImageView("pictures/Bilder alt/licht.png", lichtImageView);
+		schaufelRadImageView = initImageView("pictures/Bilder alt/schaufel.png", schaufelRadImageView);
+		drehenMitUhrzeigerImageView = initImageView("pictures/Bilder alt/armDrehenUhrzeiger.png", drehenMitUhrzeigerImageView);
+		armHebenImageView = initImageView("pictures/Bilder alt/armHeben.png", armHebenImageView);
+		armSenkenImageView = initImageView("pictures/Bilder alt/armSenken.png", armSenkenImageView);
+		einstellungenImageView = initImageView("pictures/Bilder alt/einstellungen.png", einstellungenImageView);
+		kiImageView = initImageView("pictures/Bilder alt/ki.png", kiImageView);
+		notAusImageView = initImageView("pictures/Bilder alt/notAus.png", notAusImageView);
 	}
 
-	private void initImageView(String imagePath, ImageView imageView) {
+	private ImageView initImageView(String imagePath, ImageView imageView) {
 		image = new Image(getClass().getResourceAsStream(imagePath));
 		imageView = new ImageView(image);
+		return imageView;
 	}
 
 	public ImageView getLinkerTrackZurueckImageView() {
