@@ -3,10 +3,12 @@ package application;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public class SampleView extends StackPane {
 
+	private Image image;
 	private ImageView linkerTrackVorImageView;
 	private ImageView linkerTrackZurueckImageView;
 	private ImageView rechterTrackVorImageView;
@@ -22,25 +24,31 @@ public class SampleView extends StackPane {
 	private ImageView notAusImageView;
 
 	public SampleView() {
-		Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
-		linkerTrackVorImageView = new ImageView(image);
-		image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/linkerTrackVor_1.png"));
-		linkerTrackZurueckImageView = new ImageView(image);
-		rechterTrackVorImageView = new ImageView(image);
-		rechterTrackZurueckImageView = new ImageView(image);
-		lichtImageView = new ImageView(image);
-		schaufelRadImageView = new ImageView(image);
-		drehenGegenUhrzeigerImageView = new ImageView(image);
-		drehenMitUhrzeigerImageView = new ImageView(image);
-		armHebenImageView = new ImageView(image);
-		armSenkenImageView = new ImageView(image);
-		einstellungenImageView = new ImageView(image);
-		kiImageView = new ImageView(image);
-		notAusImageView = new ImageView(image);
-
+		initImageViews();
+		
 		BorderPane mainBorderPane = new BorderPane();
 		mainBorderPane.setCenter(linkerTrackVorImageView);
 		getChildren().add(mainBorderPane);
+	}
+	
+	private void initImageViews() {
+		initImageView("pictures/linkerTrackVor_1.png", linkerTrackVorImageView);
+		initImageView("pictures/Bilder alt/linkerTrackZurueck.png", linkerTrackZurueckImageView);
+		initImageView("pictures/Bilder alt/rechterTrackVor.png", rechterTrackVorImageView);
+		initImageView("pictures/Bilder alt/rechterTrackZurueck.png", rechterTrackZurueckImageView);
+		initImageView("pictures/Bilder alt/licht.png", lichtImageView);
+		initImageView("pictures/Bilder alt/schaufel.png", schaufelRadImageView);
+		initImageView("pictures/Bilder alt/armDrehenUhrzeiger.png", drehenMitUhrzeigerImageView);
+		initImageView("pictures/Bilder alt/armHeben.png", armHebenImageView);
+		initImageView("pictures/Bilder alt/armSenken.png", armSenkenImageView);
+		initImageView("pictures/Bilder alt/einstellungen.png", einstellungenImageView);
+		initImageView("pictures/Bilder alt/ki.png", kiImageView);
+		initImageView("pictures/Bilder alt/notAus.png", notAusImageView);
+	}
+
+	private void initImageView(String imagePath, ImageView imageView) {
+		image = new Image(getClass().getResourceAsStream(imagePath));
+		imageView = new ImageView(image);
 	}
 
 	public ImageView getLinkerTrackZurueckImageView() {
