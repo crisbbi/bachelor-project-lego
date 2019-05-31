@@ -1,26 +1,32 @@
 package application;
 
-import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 
 public class SampleController {
-	Stage primaryStage;
-	SampleView view = new SampleView();
-	
-	public SampleController() {
-	}
 
-	public SampleController(Stage primaryStage) {
-		this.primaryStage = primaryStage;
-		view.show(primaryStage);
+	SampleView view;
+
+	public SampleController(SampleView sampleView) {
+		view = sampleView;
+
+		view.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.Q) {
+				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_2.png"));
+				view.getltImageView().setImage(image);
+			}
+		});
+		
+		view.setOnKeyReleased(event -> {
+			if (event.getCode() == KeyCode.Q) {
+				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				view.getltImageView().setImage(image);
+			}
+		});
 	}
 	
-	@FXML
-	public void handleKeyPressed(KeyEvent e) {
-		if(e.getCode() == KeyCode.Q) {
-			view.updateKeyPressed();
-		}
+	public SampleView getSampleView() {
+		return view;
 	}
 }
