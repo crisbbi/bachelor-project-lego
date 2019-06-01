@@ -43,10 +43,18 @@ public class SampleView extends StackPane {
 		HBox leftControls = (HBox) buildHBox(leftLabelAndTrack, rightLabelAndTrack, 5);
 		leftControls.setPadding(new Insets(10));
 
+		VBox baseTurning = (VBox) buildVBox(drehenMitUhrzeigerImageView, drehenGegenUhrzeigerImageView, 5);
+		VBox armLift = (VBox) buildVBox(armHebenImageView, armSenkenImageView, 5);
+		HBox rightControls = (HBox) buildHBox(baseTurning, armLift, 5);
+		rightControls.setAlignment(Pos.BOTTOM_CENTER);
+		rightControls.setPadding(new Insets(10));
+		
 		BorderPane bottomBar = new BorderPane();
 		bottomBar.setStyle("-fx-background-color: #000");
 		bottomBar.setLeft(leftControls);
+		bottomBar.setRight(rightControls);
 		bottomBar.setAlignment(leftControls, Pos.CENTER);
+		bottomBar.setAlignment(rightControls, Pos.BOTTOM_CENTER);
 		
 		BorderPane mainBorderPane = new BorderPane();
 		mainBorderPane.setBottom(bottomBar);
@@ -74,6 +82,7 @@ public class SampleView extends StackPane {
 		lichtImageView = initImageView("pictures/Bilder alt/licht.png", lichtImageView);
 		schaufelRadImageView = initImageView("pictures/Bilder alt/schaufel.png", schaufelRadImageView);
 		drehenMitUhrzeigerImageView = initImageView("pictures/Bilder alt/armDrehenUhrzeiger.png", drehenMitUhrzeigerImageView);
+		drehenGegenUhrzeigerImageView = initImageView("pictures/Bilder alt/armDrehenGegenUhrzeiger.png", drehenMitUhrzeigerImageView);
 		armHebenImageView = initImageView("pictures/Bilder alt/armHeben.png", armHebenImageView);
 		armSenkenImageView = initImageView("pictures/Bilder alt/armSenken.png", armSenkenImageView);
 		einstellungenImageView = initImageView("pictures/Bilder alt/einstellungen.png", einstellungenImageView);
