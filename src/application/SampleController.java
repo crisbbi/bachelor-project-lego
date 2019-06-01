@@ -73,7 +73,7 @@ public class SampleController {
 				view.getEinstellungenImageView().setImage(image);
 			}
 			// ENTER-key
-			else {
+			else if (event.getCode() == KeyCode.ENTER) {
 				// TODO Bildadresse einfügen
 				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_2.png"));
 				view.getKiImageView().setImage(image);
@@ -82,68 +82,56 @@ public class SampleController {
 		
 		view.setOnKeyReleased(event -> {
 			if (event.getCode() == KeyCode.Q) {
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/linkerTrackVor.png"));
 				view.getLinkerTrackVorImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.A) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/linkerTrackZurueck.png"));
 				view.getLinkerTrackZurueckImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.W) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/rechterTrackVor.png"));
 				view.getRechterTrackVorImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.S) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/rechterTrackZurueck.png"));
 				view.getRechterTrackZurueckImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.D) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/schaufel.png"));
 				view.getSchaufelRadImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.SPACE) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/notAus.png"));
 				view.getNotAusImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.J) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/licht.png"));
 				view.getLichtImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.I) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/armDrehenUhrzeiger.png"));
 				view.getDrehenMitUhrzeigerImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.K) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/armDrehenGegenUhrzeiger.png"));
 				view.getDrehenGegenUhrzeigerImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.O) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/armHeben.png"));
 				view.getArmHebenImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.L) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/armSenken.png"));
 				view.getArmSenkenImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.BACK_SPACE) {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/einstellungen.png"));
 				view.getEinstellungenImageView().setImage(image);
 			}
 			// ENTER-key
-			else {
-				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_1.png"));
+			else if (event.getCode() == KeyCode.ENTER) {
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/ki.png"));
 				view.getKiImageView().setImage(image);
 			}
 		});
