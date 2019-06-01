@@ -36,28 +36,46 @@ public class SampleView extends StackPane {
 		Label rightLabel = new Label("R");
 		rightLabel.setStyle("-fx-font-size: 2em; -fx-text-fill: white");
 
+		// left track-control box
 		VBox leftTrack = (VBox) buildVBox(linkerTrackVorImageView, linkerTrackZurueckImageView, 5);
 		VBox rightTrack = (VBox) buildVBox(rechterTrackVorImageView, rechterTrackZurueckImageView, 5);
 		VBox leftLabelAndTrack = (VBox) buildVBox(leftLabel, leftTrack, 10);
 		VBox rightLabelAndTrack = (VBox) buildVBox(rightLabel, rightTrack, 10);
 		HBox leftControls = (HBox) buildHBox(leftLabelAndTrack, rightLabelAndTrack, 5);
 		leftControls.setPadding(new Insets(10));
-
+		
+		// right tower-control box
 		VBox baseTurning = (VBox) buildVBox(drehenMitUhrzeigerImageView, drehenGegenUhrzeigerImageView, 5);
 		VBox armLift = (VBox) buildVBox(armHebenImageView, armSenkenImageView, 5);
 		HBox rightControls = (HBox) buildHBox(baseTurning, armLift, 5);
 		rightControls.setAlignment(Pos.BOTTOM_CENTER);
 		rightControls.setPadding(new Insets(10));
 		
-		BorderPane bottomBar = new BorderPane();
-		bottomBar.setStyle("-fx-background-color: #000");
-		bottomBar.setLeft(leftControls);
-		bottomBar.setRight(rightControls);
-		bottomBar.setAlignment(leftControls, Pos.CENTER);
-		bottomBar.setAlignment(rightControls, Pos.BOTTOM_CENTER);
+		// light and paddle wheel in VBoxes for better alignment
+		VBox schaufelRadBox = new VBox(schaufelRadImageView);
+		schaufelRadBox.setPadding(new Insets(0, 0, 10, 0));
+		schaufelRadBox.setAlignment(Pos.BOTTOM_LEFT);
+		VBox lichtBox = new VBox(lichtImageView);
+		lichtBox.setPadding(new Insets(0, 0, 32, 0));
+		lichtBox.setAlignment(Pos.BOTTOM_LEFT);
+
+		BorderPane bottomCenteBorderPane = new BorderPane();
+		bottomCenteBorderPane.setLeft(schaufelRadBox);
+		bottomCenteBorderPane.setAlignment(schaufelRadBox, Pos.BOTTOM_LEFT);
+		bottomCenteBorderPane.setRight(lichtBox);
+		bottomCenteBorderPane.setAlignment(lichtBox, Pos.BOTTOM_RIGHT);
+		bottomCenteBorderPane.setCenter(notAusImageView);
+
+		BorderPane bottomBarBorderPane = new BorderPane();
+		bottomBarBorderPane.setStyle("-fx-background-color: #000");
+		bottomBarBorderPane.setLeft(leftControls);
+		bottomBarBorderPane.setCenter(bottomCenteBorderPane);
+		bottomBarBorderPane.setRight(rightControls);
+		bottomBarBorderPane.setAlignment(leftControls, Pos.CENTER);
+		bottomBarBorderPane.setAlignment(rightControls, Pos.BOTTOM_CENTER);
 		
 		BorderPane mainBorderPane = new BorderPane();
-		mainBorderPane.setBottom(bottomBar);
+		mainBorderPane.setBottom(bottomBarBorderPane);
 		getChildren().add(mainBorderPane);
 	}
 	

@@ -14,9 +14,9 @@
    viewBox="0 0 333.13024 350.18884"
    version="1.1"
    id="svg6424"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="Zeichnung (12. Kopie).svg"
-   inkscape:export-filename="/home/christian/Dokumente/notAus.png"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="notAus.svg"
+   inkscape:export-filename="C:\Users\chris\eclipse-workspace\ss2019-42055\src\application\pictures\Bilder alt\notAus.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -165,33 +165,34 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.22627417"
-     inkscape:cx="321.33848"
+     inkscape:cx="-644.30422"
      inkscape:cy="502.63598"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="999"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
      inkscape:bbox-nodes="true"
      inkscape:snap-bbox-edge-midpoints="true"
      inkscape:snap-bbox-midpoints="true"
-     inkscape:object-paths="true"
-     inkscape:snap-intersection-paths="true"
-     inkscape:snap-smooth-nodes="true"
-     inkscape:snap-midpoints="true"
-     inkscape:snap-object-midpoints="true"
-     inkscape:snap-center="true"
-     inkscape:snap-text-baseline="true"
+     inkscape:object-paths="false"
+     inkscape:snap-intersection-paths="false"
+     inkscape:snap-smooth-nodes="false"
+     inkscape:snap-midpoints="false"
+     inkscape:snap-object-midpoints="false"
+     inkscape:snap-center="false"
+     inkscape:snap-text-baseline="false"
      inkscape:snap-page="false"
-     inkscape:snap-nodes="true"
-     inkscape:snap-others="true"
+     inkscape:snap-nodes="false"
+     inkscape:snap-others="false"
      showguides="true"
-     inkscape:guide-bbox="true">
+     inkscape:guide-bbox="true"
+     inkscape:object-nodes="false">
     <sodipodi:guide
        position="168.67154,396.27537"
        orientation="1,0"
@@ -206,7 +207,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -222,40 +223,42 @@
        height="346.8699"
        width="329.81131"
        id="rect3844-0-9-4"
-       style="clip-rule:evenodd;opacity:1;fill:#d40000;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:3.31893325;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision" />
+       style="clip-rule:evenodd;opacity:1;fill:#d40000;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:5.619;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:105.38443756px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.63461089;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-       x="-60.440399"
-       y="96.024109"
-       id="text13215-9-81-4-6"><tspan
+       style="font-style:normal;font-weight:normal;font-size:132.27838135px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.30695915;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+       x="-90.979347"
+       y="96.042114"
+       id="text13215-9-81-4-6"
+       transform="scale(1.0310148,0.96991819)"><tspan
          sodipodi:role="line"
          id="tspan13213-7-9-00-5"
-         x="-60.440399"
-         y="96.024109"
-         style="fill:#ffffff;fill-opacity:1;stroke-width:2.63461089">NOT</tspan></text>
+         x="-90.979347"
+         y="96.042114"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:3.30695915">NOT</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:105.38443756px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.63461089;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-       x="-52.204254"
-       y="210.14738"
-       id="text13215-9-81-4-6-1"><tspan
+       style="font-style:normal;font-weight:normal;font-size:132.27838135px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.30695915;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+       x="-81.637032"
+       y="211.48517"
+       id="text13215-9-81-4-6-1"
+       transform="scale(1.0310148,0.96991821)"><tspan
          sodipodi:role="line"
          id="tspan13213-7-9-00-5-2"
-         x="-52.204254"
-         y="210.14738"
-         style="fill:#ffffff;fill-opacity:1;stroke-width:2.63461089">AUS</tspan></text>
+         x="-81.637032"
+         y="211.48517"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:3.30695915">AUS</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:41.81354523px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.04533863;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-       x="-29.265417"
-       y="222.29193"
+       style="font-style:normal;font-weight:normal;font-size:67.61994171px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.69049847;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+       x="-90.685898"
+       y="232.54643"
        id="text13215-9-81-4-6-1-9"
-       transform="scale(0.80799991,1.2376239)"><tspan
+       transform="scale(0.81216263,1.2312805)"><tspan
          sodipodi:role="line"
          id="tspan13213-7-9-00-5-2-9"
-         x="-29.265417"
-         y="222.29193"
-         style="fill:#ffffff;fill-opacity:1;stroke-width:1.04533863">Leertaste</tspan></text>
+         x="-90.685898"
+         y="232.54643"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1.69049847">Leertaste</tspan></text>
   </g>
 </svg>
