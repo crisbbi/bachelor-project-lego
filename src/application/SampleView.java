@@ -178,7 +178,7 @@ public class SampleView extends StackPane {
 		return notAusImageView;
 	}
 
-	public ImageView getltImageView() {
+	public ImageView getLinkerTrackVorImageView() {
 		return linkerTrackVorImageView;
 	}
 }
