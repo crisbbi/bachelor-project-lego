@@ -31,11 +31,12 @@ public class SampleView extends StackPane {
 	public SampleView() {
 		initImageViews();
 		
+		// --------------------------- lower controls box ---------------------------------
 		Label leftLabel = new Label("L");
 		leftLabel.setStyle("-fx-font-size: 2em; -fx-text-fill: white");
 		Label rightLabel = new Label("R");
 		rightLabel.setStyle("-fx-font-size: 2em; -fx-text-fill: white");
-
+		
 		// left track-control box
 		VBox leftTrack = (VBox) buildVBox(linkerTrackVorImageView, linkerTrackZurueckImageView, 5);
 		VBox rightTrack = (VBox) buildVBox(rechterTrackVorImageView, rechterTrackZurueckImageView, 5);
@@ -58,14 +59,16 @@ public class SampleView extends StackPane {
 		VBox lichtBox = new VBox(lichtImageView);
 		lichtBox.setPadding(new Insets(0, 0, 32, 0));
 		lichtBox.setAlignment(Pos.BOTTOM_LEFT);
-
+		
+		// put schaufel left, notAus central, licht right of center part of bottom bar
 		BorderPane bottomCenteBorderPane = new BorderPane();
 		bottomCenteBorderPane.setLeft(schaufelRadBox);
 		bottomCenteBorderPane.setAlignment(schaufelRadBox, Pos.BOTTOM_LEFT);
 		bottomCenteBorderPane.setRight(lichtBox);
 		bottomCenteBorderPane.setAlignment(lichtBox, Pos.BOTTOM_RIGHT);
 		bottomCenteBorderPane.setCenter(notAusImageView);
-
+		
+		// put all parts in bottom bar
 		BorderPane bottomBarBorderPane = new BorderPane();
 		bottomBarBorderPane.setStyle("-fx-background-color: #000");
 		bottomBarBorderPane.setLeft(leftControls);
@@ -73,9 +76,19 @@ public class SampleView extends StackPane {
 		bottomBarBorderPane.setRight(rightControls);
 		bottomBarBorderPane.setAlignment(leftControls, Pos.CENTER);
 		bottomBarBorderPane.setAlignment(rightControls, Pos.BOTTOM_CENTER);
+		// --------------------------- lower controls box ---------------------------------
+		
+		// --------------------------- upper right controls ---------------------------------
+		VBox upperRightVBox = (VBox) buildVBox(einstellungenImageView, kiImageView, 5);
+		upperRightVBox.setAlignment(Pos.CENTER);
+		upperRightVBox.setPadding(new Insets(10));
+		BorderPane upperBorderPane = new BorderPane();
+		upperBorderPane.setRight(upperRightVBox);
+		// --------------------------- upper right controls ---------------------------------
 		
 		BorderPane mainBorderPane = new BorderPane();
 		mainBorderPane.setBottom(bottomBarBorderPane);
+		mainBorderPane.setTop(upperBorderPane);
 		getChildren().add(mainBorderPane);
 	}
 	
