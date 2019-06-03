@@ -2,7 +2,6 @@ package application;
 
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 public class SampleController {
 
@@ -35,7 +34,7 @@ public class SampleController {
 			else if (event.getCode() == KeyCode.D) {
 				// TODO Bildadresse einfügen
 				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_2.png"));
-				view.getSchaufelRadImageView().setImage(image);
+				view.getLichtImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.SPACE) {
 				// TODO Bildadresse einfügen
@@ -45,7 +44,7 @@ public class SampleController {
 			else if (event.getCode() == KeyCode.J) {
 				// TODO Bildadresse einfügen
 				Image image = new Image(getClass().getResourceAsStream("pictures/linkerTrackVor_2.png"));
-				view.getLichtImageView().setImage(image);
+				view.getSchaufelRadImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.I) {
 				// TODO Bildadresse einfügen
@@ -98,16 +97,16 @@ public class SampleController {
 				view.getRechterTrackZurueckImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.D) {
-				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/schaufel.png"));
-				view.getSchaufelRadImageView().setImage(image);
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/licht.png"));
+				view.getLichtImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.SPACE) {
 				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/notAus.png"));
 				view.getNotAusImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.J) {
-				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/licht.png"));
-				view.getLichtImageView().setImage(image);
+				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/schaufel.png"));
+				view.getSchaufelRadImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.I) {
 				Image image = new Image(getClass().getResourceAsStream("pictures/Bilder alt/armDrehenUhrzeiger.png"));

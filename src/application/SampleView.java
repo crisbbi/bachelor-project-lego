@@ -53,10 +53,10 @@ public class SampleView extends StackPane {
 		rightControls.setPadding(new Insets(10));
 		
 		// light and paddle wheel in VBoxes for better alignment
-		VBox schaufelRadBox = new VBox(schaufelRadImageView);
+		VBox schaufelRadBox = new VBox(lichtImageView);
 		schaufelRadBox.setPadding(new Insets(0, 0, 10, 0));
 		schaufelRadBox.setAlignment(Pos.BOTTOM_LEFT);
-		VBox lichtBox = new VBox(lichtImageView);
+		VBox lichtBox = new VBox(schaufelRadImageView);
 		lichtBox.setPadding(new Insets(0, 0, 32, 0));
 		lichtBox.setAlignment(Pos.BOTTOM_LEFT);
 		
