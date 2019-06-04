@@ -6,10 +6,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 public class SampleView extends StackPane {
 
@@ -44,6 +47,7 @@ public class SampleView extends StackPane {
 		VBox rightLabelAndTrack = (VBox) buildVBox(rightLabel, rightTrack, 10);
 		HBox leftControls = (HBox) buildHBox(leftLabelAndTrack, rightLabelAndTrack, 5);
 		leftControls.setPadding(new Insets(10));
+		leftControls.setStyle("-fx-background-color: #000");
 		
 		// right tower-control box
 		VBox baseTurning = (VBox) buildVBox(drehenMitUhrzeigerImageView, drehenGegenUhrzeigerImageView, 5);
@@ -51,31 +55,37 @@ public class SampleView extends StackPane {
 		HBox rightControls = (HBox) buildHBox(baseTurning, armLift, 5);
 		rightControls.setAlignment(Pos.BOTTOM_CENTER);
 		rightControls.setPadding(new Insets(10));
+		rightControls.setStyle("-fx-background-color: #000");
 		
 		// light and paddle wheel in VBoxes for better alignment
-		VBox schaufelRadBox = new VBox(lichtImageView);
-		schaufelRadBox.setPadding(new Insets(0, 0, 10, 0));
-		schaufelRadBox.setAlignment(Pos.BOTTOM_LEFT);
-		VBox lichtBox = new VBox(schaufelRadImageView);
-		lichtBox.setPadding(new Insets(0, 0, 32, 0));
+		VBox schaufelRadBox = new VBox(schaufelRadImageView);
+		schaufelRadBox.setPadding(new Insets(10, 0, 10, 0));
+		schaufelRadBox.setAlignment(Pos.BOTTOM_RIGHT);
+		VBox lichtBox = new VBox(lichtImageView);
+		lichtBox.setPadding(new Insets(10, 0, 10, 0));
 		lichtBox.setAlignment(Pos.BOTTOM_LEFT);
 		
-		// put schaufel left, notAus central, licht right of center part of bottom bar
+		// put schaufel left, notAus central, licht right in BorderPane
+		BorderPane bottomCenterBottomBorderPane = new BorderPane();
+		bottomCenterBottomBorderPane.setRight(schaufelRadBox);
+		bottomCenterBottomBorderPane.setAlignment(schaufelRadBox, Pos.BOTTOM_LEFT);
+		bottomCenterBottomBorderPane.setLeft(lichtBox);
+		bottomCenterBottomBorderPane.setAlignment(lichtBox, Pos.BOTTOM_RIGHT);
+		bottomCenterBottomBorderPane.setCenter(notAusImageView);
+		bottomCenterBottomBorderPane.setStyle("-fx-background-color: #000");
+		
+		// put bottomCenterBottomBorderPane on bottom part of the center of the bottom border panel
 		BorderPane bottomCenteBorderPane = new BorderPane();
-		bottomCenteBorderPane.setLeft(schaufelRadBox);
-		bottomCenteBorderPane.setAlignment(schaufelRadBox, Pos.BOTTOM_LEFT);
-		bottomCenteBorderPane.setRight(lichtBox);
-		bottomCenteBorderPane.setAlignment(lichtBox, Pos.BOTTOM_RIGHT);
-		bottomCenteBorderPane.setCenter(notAusImageView);
+		bottomCenteBorderPane.setBottom(bottomCenterBottomBorderPane);
 		
 		// put all parts in bottom bar
 		BorderPane bottomBarBorderPane = new BorderPane();
-		bottomBarBorderPane.setStyle("-fx-background-color: #000");
 		bottomBarBorderPane.setLeft(leftControls);
 		bottomBarBorderPane.setCenter(bottomCenteBorderPane);
 		bottomBarBorderPane.setRight(rightControls);
 		bottomBarBorderPane.setAlignment(leftControls, Pos.CENTER);
 		bottomBarBorderPane.setAlignment(rightControls, Pos.BOTTOM_CENTER);
+		bottomBarBorderPane.setMargin(rightControls, new Insets(40, 0, 0, 0));
 		// --------------------------- lower controls box ---------------------------------
 		
 		// --------------------------- upper right controls ---------------------------------
@@ -89,6 +99,11 @@ public class SampleView extends StackPane {
 		BorderPane mainBorderPane = new BorderPane();
 		mainBorderPane.setBottom(bottomBarBorderPane);
 		mainBorderPane.setTop(upperBorderPane);
+
+		WebView webView = new WebView();
+		WebEngine webEngine = webView.getEngine();
+		webEngine.load("https://youtube.de");
+		getChildren().add(webView);
 		getChildren().add(mainBorderPane);
 	}
 	
