@@ -66,7 +66,7 @@ public class Controller {
 		Controller controller = new Controller();
 		KeyManager keyManager = new KeyManager(controller);
 		initializeThreads();
-		
+		Server server = new Server(5004);
 
 
 	}
