@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.io.*;
 
@@ -22,8 +23,11 @@ public class Client {
 		} catch (UnknownHostException e) {
 			System.err.println("Couldn't connect to host: Unknown host");
 			e.printStackTrace();
+		} catch (SocketException e) {
+			System.err.println("Couldn't connect to host (Socket Exception)");
+			e.printStackTrace();
 		} catch (IOException e) {
-			System.err.println("Couldn't connect to host (IO Exception)");
+			System.err.println("Couldn't connect to host (other IO Exception)");
 			e.printStackTrace();
 		}
 	}

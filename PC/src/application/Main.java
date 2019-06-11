@@ -15,9 +15,9 @@ public class Main extends Application {
 		primaryStage.setMaximized(true);
 		primaryStage.show();
 		scene.getRoot().requestFocus();
-		//Initiallize a new Client
+		//Initialize a new Client
 		//TODO change to correct Port and IP
-		Client client = new Client("127.0.0.1", 5004);
+		Client client = new Client("127.0.0.1", 3000);
 	}
 	
 	public static void main(String[] args) {
