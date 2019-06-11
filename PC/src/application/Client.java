@@ -6,7 +6,7 @@ import java.net.UnknownHostException;
 import java.io.*;
 
 /**
- * @author Hendrik Kolterjahn
+ * @author Hendrik Kolterjahn, Simon Buchholz
  *
  */
 public class Client {
@@ -20,10 +20,10 @@ public class Client {
 		try {
 			socket = new Socket(ip, port);
 		} catch (UnknownHostException e) {
-			System.out.println("Couldnt Connect to Host");
+			System.err.println("Couldn't connect to host: Unknown host");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("Couldnt Connect to Host (IO)");
+			System.err.println("Couldn't connect to host (IO Exception)");
 			e.printStackTrace();
 		}
 	}
@@ -31,14 +31,14 @@ public class Client {
 	/**Sends a message to the Host (PI)
 	 * @param message the message to send
 	 */
-	void schreibeNachricht(String message) {
+	void sendMessage(String message) {
 		PrintWriter printWriter ;
 		try {
 			printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 			printWriter.print(message);
 			printWriter.flush();
 		} catch (IOException e) {
-			System.out.println("Couldnt send Message to Host");
+			System.err.println("Couldn't send message to host");
 			e.printStackTrace();
 		}
 		
