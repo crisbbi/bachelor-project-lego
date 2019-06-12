@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
@@ -22,16 +23,17 @@ public class Client {
 	public Client(String ip, int port) {
 
 		String ipnew = ip;
+		socket = new Socket();
 		for (int i = 0; i < 256; i++) {
 			try {
 				ipnew = ip;
 				ipnew += Integer.toString(i);
-				socket = new Socket(ipnew, port);
+				socket.connect(new InetSocketAddress(ipnew, port), 200);
 				System.out.println("Richtiger boi ist bei: "+ipnew);
 				break;
 			} catch (Exception e) {
-				System.err.println("falscher boi :c");
-				e.printStackTrace();
+				System.out.println("falscher boi :c");
+				
 			}
 		}
 
