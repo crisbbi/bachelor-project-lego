@@ -63,12 +63,10 @@ public class Controller {
 	private static int[] motorStatus = new int[8];
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
-		Controller controller = new Controller();
+		controller = new Controller();
 		KeyManager keyManager = new KeyManager(controller);
+		
 		initializeThreads();
-		Server server = new Server(5004);
-
-
 	}
 	
 	private static void initializeThreads() throws IOException, InterruptedException{
@@ -78,9 +76,13 @@ public class Controller {
 
 		Thread threadSBrick0 = new Thread(SBrick0);
 		Thread threadSBrick1 = new Thread(SBrick1);
-
+		Server server = new Server(5011);
+		server.controller = controller; 
+		Thread serverThread = new Thread(server);
+		
 		threadSBrick0.start();
 		threadSBrick1.start();
+		serverThread.start();
 		
 		connectionStatus = true;
 		
