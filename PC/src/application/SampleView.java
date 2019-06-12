@@ -27,8 +27,6 @@ public class SampleView extends StackPane {
 	private ImageView drehenMitUhrzeigerImageView;
 	private ImageView armHebenImageView;
 	private ImageView armSenkenImageView;
-	private ImageView einstellungenImageView;
-	private ImageView kiImageView;
 	private ImageView notAusImageView;
 
 	public SampleView() {
@@ -89,17 +87,10 @@ public class SampleView extends StackPane {
 		// --------------------------- lower controls box ---------------------------------
 		
 		// --------------------------- upper right controls ---------------------------------
-		VBox upperRightVBox = (VBox) buildVBox(einstellungenImageView, kiImageView, 5);
-		upperRightVBox.setAlignment(Pos.CENTER);
-		upperRightVBox.setPadding(new Insets(10));
-		BorderPane upperBorderPane = new BorderPane();
-		upperBorderPane.setRight(upperRightVBox);
-		// --------------------------- upper right controls ---------------------------------
 		
 		BorderPane mainBorderPane = new BorderPane();
 		mainBorderPane.setBottom(bottomBarBorderPane);
-		mainBorderPane.setTop(upperBorderPane);
-
+		
 		WebView webView = new WebView();
 		WebEngine webEngine = webView.getEngine();
 		webEngine.load("https://youtube.de");
@@ -121,19 +112,17 @@ public class SampleView extends StackPane {
 	}
 
 	private void initImageViews() {
-		linkerTrackVorImageView = initImageView("pictures/Bilder alt/linkerTrackVor.png", linkerTrackVorImageView);
-		linkerTrackZurueckImageView = initImageView("pictures/Bilder alt/linkerTrackZurueck.png", linkerTrackZurueckImageView);
-		rechterTrackVorImageView = initImageView("pictures/Bilder alt/rechterTrackVor.png", rechterTrackVorImageView);
-		rechterTrackZurueckImageView = initImageView("pictures/Bilder alt/rechterTrackZurueck.png", rechterTrackZurueckImageView);
-		lichtImageView = initImageView("pictures/Bilder alt/licht.png", lichtImageView);
-		schaufelRadImageView = initImageView("pictures/Bilder alt/schaufel.png", schaufelRadImageView);
-		drehenMitUhrzeigerImageView = initImageView("pictures/Bilder alt/armDrehenUhrzeiger.png", drehenMitUhrzeigerImageView);
-		drehenGegenUhrzeigerImageView = initImageView("pictures/Bilder alt/armDrehenGegenUhrzeiger.png", drehenMitUhrzeigerImageView);
-		armHebenImageView = initImageView("pictures/Bilder alt/armHeben.png", armHebenImageView);
-		armSenkenImageView = initImageView("pictures/Bilder alt/armSenken.png", armSenkenImageView);
-		einstellungenImageView = initImageView("pictures/Bilder alt/einstellungen.png", einstellungenImageView);
-		kiImageView = initImageView("pictures/Bilder alt/ki.png", kiImageView);
-		notAusImageView = initImageView("pictures/Bilder alt/notAus.png", notAusImageView);
+		linkerTrackVorImageView = initImageView("pictures/linkerTrackVor_1.png", linkerTrackVorImageView);
+		linkerTrackZurueckImageView = initImageView("pictures/linkerTrackZurueck_1.png", linkerTrackZurueckImageView);
+		rechterTrackVorImageView = initImageView("pictures/rechterTrackVor_1.png", rechterTrackVorImageView);
+		rechterTrackZurueckImageView = initImageView("pictures/rechterTrackZurueck_1.png", rechterTrackZurueckImageView);
+		lichtImageView = initImageView("pictures/licht_1.png", lichtImageView);
+		schaufelRadImageView = initImageView("pictures/schaufel_1.png", schaufelRadImageView);
+		drehenMitUhrzeigerImageView = initImageView("pictures/armDrehenUhrzeiger_1.png", drehenMitUhrzeigerImageView);
+		drehenGegenUhrzeigerImageView = initImageView("pictures/armDrehenGegenUhrzeiger_1.png", drehenMitUhrzeigerImageView);
+		armHebenImageView = initImageView("pictures/armHeben_1.png", armHebenImageView);
+		armSenkenImageView = initImageView("pictures/armSenken_1.png", armSenkenImageView);
+		notAusImageView = initImageView("pictures/notAus.png", notAusImageView);
 	}
 
 	private ImageView initImageView(String imagePath, ImageView imageView) {
@@ -179,14 +168,6 @@ public class SampleView extends StackPane {
 
 	public ImageView getArmSenkenImageView() {
 		return armSenkenImageView;
-	}
-
-	public ImageView getEinstellungenImageView() {
-		return einstellungenImageView;
-	}
-
-	public ImageView getKiImageView() {
-		return kiImageView;
 	}
 
 	public ImageView getNotAusImageView() {
