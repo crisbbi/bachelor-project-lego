@@ -17,8 +17,8 @@ public class Main extends Application {
 		scene.getRoot().requestFocus();
 		//Initialize a new Client
 		//TODO change to correct Port and IP
-		Client client = new Client("127.0.0.1", 3000);
-		samplseController.client = client;
+		Client client = new Client("141.83.149.", 5011);
+		sampleController.client = client;
 	}
 	
 	public static void main(String[] args) {
