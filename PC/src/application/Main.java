@@ -18,6 +18,7 @@ public class Main extends Application {
 		//Initialize a new Client
 		//TODO change to correct Port and IP
 		Client client = new Client("127.0.0.1", 3000);
+		samplseController.client = client;
 	}
 	
 	public static void main(String[] args) {
