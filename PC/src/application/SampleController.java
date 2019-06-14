@@ -75,6 +75,18 @@ public class SampleController {
 				Image image = new Image(getClass().getResourceAsStream("pictures/armSenken_2.png"));
 				view.getArmSenkenImageView().setImage(image);
 			}
+			else if (event.getCode() == KeyCode.G) {
+				client.sendMessage("FliessbandDREHENLINKS");
+				// TODO Bildadresse einfügen
+				Image image = new Image(getClass().getResourceAsStream("pictures/armSenken_2.png"));
+				view.getFliessBandLinksImageView().setImage(image);
+			}
+			else if (event.getCode() == KeyCode.H) {
+				client.sendMessage("FliessbandDREHENRECHTS");
+				// TODO Bildadresse einfügen
+				Image image = new Image(getClass().getResourceAsStream("pictures/armSenken_2.png"));
+				view.getFliessBandRechtsImageView().setImage(image);
+			}
 		});
 		
 		view.setOnKeyReleased(event -> {
@@ -130,6 +142,18 @@ public class SampleController {
 				client.sendMessage("SchaufelradABAUS");
 				Image image = new Image(getClass().getResourceAsStream("pictures/armSenken_1.png"));
 				view.getArmSenkenImageView().setImage(image);
+			}
+			else if (event.getCode() == KeyCode.G) {
+				client.sendMessage("FliessbandDrehenLinksAUS");
+				// TODO Bildadresse einfügen
+				Image image = new Image(getClass().getResourceAsStream("pictures/fliessbandLinks_1.png"));
+				view.getFliessBandLinksImageView().setImage(image);
+			}
+			else if (event.getCode() == KeyCode.H) {
+				client.sendMessage("FliessbandDrehenRechtsAUS");
+				// TODO Bildadresse einfügen
+				Image image = new Image(getClass().getResourceAsStream("pictures/fliessbandRechts_1.png"));
+				view.getFliessBandRechtsImageView().setImage(image);
 			}
 		});
 	}

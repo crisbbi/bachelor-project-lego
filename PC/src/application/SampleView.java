@@ -31,6 +31,8 @@ public class SampleView extends StackPane {
 	private ImageView armHebenImageView;
 	private ImageView armSenkenImageView;
 	private ImageView notAusImageView;
+	private ImageView fliessBandLinksImageView;
+	private ImageView fliessBandRechtsImageView;
 
 	/**
 	 * The constructor, which builds the UI
@@ -62,17 +64,18 @@ public class SampleView extends StackPane {
 		rightControls.setStyle("-fx-background-color: #000");
 		
 		// light and paddle wheel in VBoxes for better alignment
-		VBox schaufelRadBox = new VBox(schaufelRadImageView);
-		schaufelRadBox.setPadding(new Insets(10, 0, 10, 0));
-		schaufelRadBox.setAlignment(Pos.BOTTOM_RIGHT);
+		HBox fliessbandSchaufelBox = new HBox(fliessBandLinksImageView, fliessBandRechtsImageView, schaufelRadImageView);
+		fliessbandSchaufelBox.setPadding(new Insets(10, 0, 10, 0));
+		fliessbandSchaufelBox.setSpacing(5);
+		fliessbandSchaufelBox.setAlignment(Pos.BOTTOM_RIGHT);
 		VBox lichtBox = new VBox(lichtImageView);
 		lichtBox.setPadding(new Insets(10, 0, 10, 0));
 		lichtBox.setAlignment(Pos.BOTTOM_LEFT);
 		
 		// put schaufel left, notAus central, licht right in BorderPane
 		BorderPane bottomCenterBottomBorderPane = new BorderPane();
-		bottomCenterBottomBorderPane.setRight(schaufelRadBox);
-		bottomCenterBottomBorderPane.setAlignment(schaufelRadBox, Pos.BOTTOM_LEFT);
+		bottomCenterBottomBorderPane.setRight(fliessbandSchaufelBox);
+		bottomCenterBottomBorderPane.setAlignment(fliessbandSchaufelBox, Pos.BOTTOM_LEFT);
 		bottomCenterBottomBorderPane.setLeft(lichtBox);
 		bottomCenterBottomBorderPane.setAlignment(lichtBox, Pos.BOTTOM_RIGHT);
 		bottomCenterBottomBorderPane.setCenter(notAusImageView);
@@ -148,6 +151,8 @@ public class SampleView extends StackPane {
 		armHebenImageView = initImageView("pictures/armHeben_1.png", armHebenImageView);
 		armSenkenImageView = initImageView("pictures/armSenken_1.png", armSenkenImageView);
 		notAusImageView = initImageView("pictures/notAus.png", notAusImageView);
+		fliessBandLinksImageView = initImageView("pictures/fliessbandLinks_1.png", fliessBandLinksImageView);
+		fliessBandRechtsImageView = initImageView("pictures/fliessbandRechts_1.png", fliessBandRechtsImageView);
 	}
 
 	/**
@@ -263,5 +268,23 @@ public class SampleView extends StackPane {
 	 */
 	public ImageView getLinkerTrackVorImageView() {
 		return linkerTrackVorImageView;
+	}
+
+	/**
+	 * Returns the ImageView fliessBandLinksImageView
+	 * 
+	 * @return ImageView fliessBandLinksImageView
+	 */
+	public ImageView getFliessBandLinksImageView() {
+		return fliessBandLinksImageView;
+	}
+
+	/**
+	 * Returns the ImageView fliessBandRechtsImageView
+	 * 
+	 * @return ImageView fliessBandRechtsImageView
+	 */
+	public ImageView getFliessBandRechtsImageView() {
+		return fliessBandRechtsImageView;
 	}
 }
