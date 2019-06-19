@@ -78,13 +78,13 @@ public class SampleController {
 			else if (event.getCode() == KeyCode.G) {
 				client.sendMessage("FliessbandDREHENLINKS");
 				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/armSenken_2.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/fliessbandLinks_2.png"));
 				view.getFliessBandLinksImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.H) {
 				client.sendMessage("FliessbandDREHENRECHTS");
 				// TODO Bildadresse einfügen
-				Image image = new Image(getClass().getResourceAsStream("pictures/armSenken_2.png"));
+				Image image = new Image(getClass().getResourceAsStream("pictures/fliessbandRechts_2.png"));
 				view.getFliessBandRechtsImageView().setImage(image);
 			}
 		});
