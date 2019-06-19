@@ -14,6 +14,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+/**
+ * SampleView builds on top of a {@link StackPane} and creates a User Interface for the main PC application
+ */
 public class SampleView extends StackPane {
 
 	private Image image;
@@ -28,7 +31,12 @@ public class SampleView extends StackPane {
 	private ImageView armHebenImageView;
 	private ImageView armSenkenImageView;
 	private ImageView notAusImageView;
+	private ImageView fliessBandLinksImageView;
+	private ImageView fliessBandRechtsImageView;
 
+	/**
+	 * The constructor, which builds the UI
+	 */
 	public SampleView() {
 		initImageViews();
 		
@@ -56,17 +64,18 @@ public class SampleView extends StackPane {
 		rightControls.setStyle("-fx-background-color: #000");
 		
 		// light and paddle wheel in VBoxes for better alignment
-		VBox schaufelRadBox = new VBox(schaufelRadImageView);
-		schaufelRadBox.setPadding(new Insets(10, 0, 10, 0));
-		schaufelRadBox.setAlignment(Pos.BOTTOM_RIGHT);
+		HBox fliessbandSchaufelBox = new HBox(fliessBandLinksImageView, fliessBandRechtsImageView, schaufelRadImageView);
+		fliessbandSchaufelBox.setPadding(new Insets(10, 0, 10, 0));
+		fliessbandSchaufelBox.setSpacing(5);
+		fliessbandSchaufelBox.setAlignment(Pos.BOTTOM_RIGHT);
 		VBox lichtBox = new VBox(lichtImageView);
 		lichtBox.setPadding(new Insets(10, 0, 10, 0));
 		lichtBox.setAlignment(Pos.BOTTOM_LEFT);
 		
 		// put schaufel left, notAus central, licht right in BorderPane
 		BorderPane bottomCenterBottomBorderPane = new BorderPane();
-		bottomCenterBottomBorderPane.setRight(schaufelRadBox);
-		bottomCenterBottomBorderPane.setAlignment(schaufelRadBox, Pos.BOTTOM_LEFT);
+		bottomCenterBottomBorderPane.setRight(fliessbandSchaufelBox);
+		bottomCenterBottomBorderPane.setAlignment(fliessbandSchaufelBox, Pos.BOTTOM_LEFT);
 		bottomCenterBottomBorderPane.setLeft(lichtBox);
 		bottomCenterBottomBorderPane.setAlignment(lichtBox, Pos.BOTTOM_RIGHT);
 		bottomCenterBottomBorderPane.setCenter(notAusImageView);
@@ -98,12 +107,28 @@ public class SampleView extends StackPane {
 		getChildren().add(mainBorderPane);
 	}
 	
+	/**
+	 * Builds an HBox of leftItem and rightItem with spacing in between 
+	 * 
+	 * @param leftItem First item put in the box
+	 * @param rightItem Second item put in the box
+	 * @param spacing The free space between the items
+	 * @return The constructed HBox as a Node
+	 */
 	private Node buildHBox(Node leftItem, Node rightItem, int spacing) {
 		HBox hbox = new HBox(leftItem, rightItem);
 		hbox.setSpacing(spacing);
 		return hbox;
 	}
 
+	/**
+	 * Builds a VBox of upperItem and lowerItem with spacing in between
+	 * 
+	 * @param upperItem First item put in the box
+	 * @param lowerItem Second item put in the box
+	 * @param spacing The free space between the items
+	 * @return The constructed VBox as a Node
+	 */
 	private Node buildVBox(Node upperItem, Node lowerItem, int spacing) {
 		VBox vbox = new VBox(upperItem, lowerItem);
 		vbox.setAlignment(Pos.CENTER);
@@ -111,6 +136,9 @@ public class SampleView extends StackPane {
 		return vbox;
 	}
 
+	/**
+	 * Constructs all ImageViews
+	 */
 	private void initImageViews() {
 		linkerTrackVorImageView = initImageView("pictures/linkerTrackVor_1.png", linkerTrackVorImageView);
 		linkerTrackZurueckImageView = initImageView("pictures/linkerTrackZurueck_1.png", linkerTrackZurueckImageView);
@@ -123,8 +151,17 @@ public class SampleView extends StackPane {
 		armHebenImageView = initImageView("pictures/armHeben_1.png", armHebenImageView);
 		armSenkenImageView = initImageView("pictures/armSenken_1.png", armSenkenImageView);
 		notAusImageView = initImageView("pictures/notAus.png", notAusImageView);
+		fliessBandLinksImageView = initImageView("pictures/fliessbandLinks_1.png", fliessBandLinksImageView);
+		fliessBandRechtsImageView = initImageView("pictures/fliessbandRechts_1.png", fliessBandRechtsImageView);
 	}
 
+	/**
+	 * Constructs an ImageView from the imagePath and builds a new ImageView object from the passed imageView
+	 * 
+	 * @param imagePath The image's String source path 
+	 * @param imageView The ImageView variable
+	 * @return The constructed ImageView
+	 */
 	private ImageView initImageView(String imagePath, ImageView imageView) {
 		image = new Image(getClass().getResourceAsStream(imagePath));
 		imageView = new ImageView(image);
@@ -134,47 +171,120 @@ public class SampleView extends StackPane {
 		return imageView;
 	}
 
+	/**
+	 * Returns the ImageView linkeTrackZurueckImageView
+	 * 
+	 * @return ImageView linkeTrackZurueckImageView
+	 */
 	public ImageView getLinkerTrackZurueckImageView() {
 		return linkerTrackZurueckImageView;
 	}
 
+	/**
+	 * Returns the ImageView rechterTrackVorImageView
+	 * 
+	 * @return ImageView rechterTrackVorImageView
+	 */
 	public ImageView getRechterTrackVorImageView() {
 		return rechterTrackVorImageView;
 	}
 
+	/**
+	 * Returns the ImageView rechterTrackZurueckImageView
+	 * 
+	 * @return ImageView rechterTrackZurueckImageView
+	 */
 	public ImageView getRechterTrackZurueckImageView() {
 		return rechterTrackZurueckImageView;
 	}
 
+	/**
+	 * Returns the ImageView lichtImageView
+	 * 
+	 * @return ImageView lichtImageView
+	 */
 	public ImageView getLichtImageView() {
 		return lichtImageView;
 	}
 
+	/**
+	 * Returns the ImageView schaufelRadImageView
+	 * 
+	 * @return ImageView schaufelRadImageView
+	 */
 	public ImageView getSchaufelRadImageView() {
 		return schaufelRadImageView;
 	}
 
+	/**
+	 * Returns the ImageView drehenGegenUhrzeigerImageView
+	 * 
+	 * @return ImageView drehenGegenUhrzeigerImageView
+	 */
 	public ImageView getDrehenGegenUhrzeigerImageView() {
 		return drehenGegenUhrzeigerImageView;
 	}
 
+	/**
+	 * Returns the ImageView drehenMitUhrzeigerImageView
+	 * 
+	 * @return ImageView drehenMitUhrzeigerImageView
+	 */
 	public ImageView getDrehenMitUhrzeigerImageView() {
 		return drehenMitUhrzeigerImageView;
 	}
 
+	/**
+	 * Returns the ImageView armHebenImageView
+	 * 
+	 * @return ImageView armHebenImageView
+	 */
 	public ImageView getArmHebenImageView() {
 		return armHebenImageView;
 	}
 
+	/**
+	 * Returns the ImageView armSenkenImageView
+	 * 
+	 * @return ImageView armSenkenImageView
+	 */
 	public ImageView getArmSenkenImageView() {
 		return armSenkenImageView;
 	}
 
+	/**
+	 * Returns the ImageView notAusImageView
+	 * 
+	 * @return ImageView notAusImageView
+	 */
 	public ImageView getNotAusImageView() {
 		return notAusImageView;
 	}
 
+	/**
+	 * Returns the ImageView linkerTrackVorImageView
+	 * 
+	 * @return ImageView linkerTrackVorImageView
+	 */
 	public ImageView getLinkerTrackVorImageView() {
 		return linkerTrackVorImageView;
+	}
+
+	/**
+	 * Returns the ImageView fliessBandLinksImageView
+	 * 
+	 * @return ImageView fliessBandLinksImageView
+	 */
+	public ImageView getFliessBandLinksImageView() {
+		return fliessBandLinksImageView;
+	}
+
+	/**
+	 * Returns the ImageView fliessBandRechtsImageView
+	 * 
+	 * @return ImageView fliessBandRechtsImageView
+	 */
+	public ImageView getFliessBandRechtsImageView() {
+		return fliessBandRechtsImageView;
 	}
 }

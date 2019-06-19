@@ -1,8 +1,11 @@
-/bin/
+*.class
+*/bin/**
 .metadata
 local.properties
 .settings/
 build.fxbuild
+.project
+.classpath
 
 # Locally stored "Eclipse launch configurations"
 *.launch

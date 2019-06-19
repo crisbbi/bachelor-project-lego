@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
@@ -19,8 +20,9 @@ public class Client {
 	 * 
 	 * @param ip
 	 * @param port
+	 * @throws  
 	 */
-	public Client(String ip, int port) {
+	public Client(String ip, int port)   {
 
 		try {
 
@@ -36,14 +38,12 @@ public class Client {
 	/**
 	 * Sends a message to the Host (PI)
 	 * 
-	 * @param message
-	 *            the message to send
+	 * @param message the message to send
 	 */
 	void sendMessage(String message) {
 		PrintWriter printWriter;
 		try {
-			printWriter = new PrintWriter(new OutputStreamWriter(
-					socket.getOutputStream()));
+			printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 			printWriter.print(message);
 			printWriter.flush();
 		} catch (IOException e) {
