@@ -1,5 +1,11 @@
 package application;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.swing.JEditorPane;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -11,6 +17,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
@@ -102,7 +111,7 @@ public class SampleView extends StackPane {
 		
 		WebView webView = new WebView();
 		WebEngine webEngine = webView.getEngine();
-		webEngine.load("https://youtube.de");
+		webEngine.load("http://141.83.149.233:8083/javascript_simple.html");
 		getChildren().add(webView);
 		getChildren().add(mainBorderPane);
 	}
