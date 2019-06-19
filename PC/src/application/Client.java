@@ -22,19 +22,13 @@ public class Client {
 	 */
 	public Client(String ip, int port) {
 
-		String ipnew = ip;
-		socket = new Socket();
-		for (int i = 0; i < 256; i++) {
-			try {
-				ipnew = ip;
-				ipnew += Integer.toString(i);
-				socket.connect(new InetSocketAddress(ipnew, port), 200);
-				System.out.println("Richtiger boi ist bei: "+ipnew);
-				break;
-			} catch (Exception e) {
-				System.out.println("falscher boi :c");
-				
-			}
+		try {
+
+			socket.connect(new InetSocketAddress(ip, port), 200);
+
+		} catch (Exception e) {
+			System.out.println("Couldnt connect to PI");
+
 		}
 
 	}
