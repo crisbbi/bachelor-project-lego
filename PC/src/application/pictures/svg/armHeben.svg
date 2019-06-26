@@ -14,8 +14,8 @@
    viewBox="0 0 333.91769 422.2622"
    version="1.1"
    id="svg6424"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="Zeichnung (10. Kopie).svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="armHeben.svg"
    inkscape:export-filename="/home/christian/Dokumente/armDrehenGegenUhrzeiger.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -165,15 +165,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="385.04315"
+     inkscape:cx="335.04315"
      inkscape:cy="1108.5446"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="999"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="2160"
+     inkscape:window-height="1330"
+     inkscape:window-x="-12"
+     inkscape:window-y="-12"
      inkscape:window-maximized="1"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
@@ -196,7 +196,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -416,13 +416,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:105.38443756px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.63461089;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-       x="18.158213"
+       x="30.329056"
        y="317.89468"
        id="text13215-9-81-4-2"><tspan
          sodipodi:role="line"
          id="tspan13213-7-9-00-1"
-         x="18.158213"
+         x="30.329056"
          y="317.89468"
-         style="fill:#ffffff;fill-opacity:1;stroke-width:2.63461089">O</tspan></text>
+         style="fill:#ffffff;fill-opacity:1;stroke-width:2.63461089">A</tspan></text>
   </g>
 </svg>
