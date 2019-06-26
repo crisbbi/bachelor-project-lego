@@ -27,7 +27,7 @@ public class Client {
 
 		try {
 
-			socket.connect(new InetSocketAddress(ip, port), 200);
+			Socket socket = new Socket(ip, port);
 
 		} catch (Exception e) {
 			System.out.println("Couldnt connect to PI");
