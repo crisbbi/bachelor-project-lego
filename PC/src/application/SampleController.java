@@ -34,7 +34,7 @@ public class SampleController {
 				view.getRechterTrackZurueckImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.T) {
-				//client.sendMessage("KettelinksvorAN");
+				client.sendMessage("LICHT");
 				// TODO Bildadresse einfügen
 				Image image = new Image(getClass().getResourceAsStream("pictures/licht_2.png"));
 				view.getLichtImageView().setImage(image);

@@ -46,6 +46,7 @@ public class Server implements Runnable {
 		BufferedReader bufferedReader = new BufferedReader(
 				new InputStreamReader(socket.getInputStream()));
 		// TODO set proper buffer size
+		
 		char[] buffer = new char[200];
 		int charCount = bufferedReader.read(buffer, 0, 200);
 		if (charCount < 1) {
@@ -53,6 +54,7 @@ public class Server implements Runnable {
 		}
 		String message = new String(buffer, 0, charCount);
 		return message;
+		//return bufferedReader.readLine();
 	}
 
 	public void run() {
@@ -64,6 +66,7 @@ public class Server implements Runnable {
 				LED.setWhiteOn();
 				while (socket.isConnected()) {
 					String message = readMessage();
+					//System.out.println(message);
 					// TODO handle message
 					String[] messages = message.split(" ");
 					for (int i = 0; i < messages.length; i++) {
@@ -117,6 +120,9 @@ public class Server implements Runnable {
 								}
 								controller.setMotorStatus(3, 1);
 							}
+						}
+						if (message.equals("LICHT")) {
+							LED.setOff();
 						}
 						if (message.equals("BaggerarmrechtsAN")) {
 							if (controller.getMotorStatus(3) == 0) {
