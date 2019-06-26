@@ -5,6 +5,25 @@
     android:layout_height="match_parent" >
 
     <LinearLayout
+        android:id="@+id/middleControl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/black"
+        android:orientation="horizontal"
+        android:paddingTop="15px"
+        android:paddingBottom="15px">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/notaus" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/leftControl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,14 +76,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/middleControl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:background="@android:">
     </LinearLayout>
 
     <LinearLayout
