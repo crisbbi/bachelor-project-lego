@@ -78,7 +78,7 @@ public class Controller {
 
 		Thread threadSBrick0 = new Thread(SBrick0);
 		Thread threadSBrick1 = new Thread(SBrick1);
-		Server server = new Server(5012);
+		Server server = new Server(5013);
 		server.controller = controller; 
 		Thread serverThread = new Thread(server);
 		
@@ -89,7 +89,15 @@ public class Controller {
 		connectionStatus = true;
 		
 		while(true){
-			Thread.sleep(1000);
+			Thread.sleep(30000);
+			System.out.println("brudder mus neu staaten");
+			threadSBrick0.stop();
+			threadSBrick1.stop();
+		
+			 threadSBrick0 = new Thread(SBrick0);
+			 threadSBrick1 = new Thread(SBrick1);
+			 threadSBrick0.start();
+				threadSBrick1.start();
 			if(connectionStatus == false){
 				System.out.println("[RECONNECT]");
 				SBrick0.reconnect();

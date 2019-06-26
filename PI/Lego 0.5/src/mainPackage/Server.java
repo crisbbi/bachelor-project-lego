@@ -32,7 +32,8 @@ public class Server implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("I bims 1 server am start auf " + Integer.toString(port) + " vong port her");
+		System.out.println("I bims 1 server am start auf "
+				+ Integer.toString(port) + " vong port her");
 
 	}
 
@@ -55,210 +56,235 @@ public class Server implements Runnable {
 	}
 
 	public void run() {
-		try {
-			socket = waitForLogin(serverSocket);
-			System.out.println("Client connected to me");
-			while (socket.isConnected()) {
-				String message = readMessage();
-				// TODO handle message
-				String[] messages = message.split(" ");
-				for (int i = 0; i < messages.length; i++) {
-					message = messages[i];
-					if (message.length() > 1) {
-						System.out.println(message);
-					} else {
-						break;
-					}
-					if (message.equals("SchaufelradABAN")) {
-						if(controller.getMotorStatus(0) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 0 : AN ABWAERTS");
+		while (true) {
+			try {
+				System.out.println("Waiting for Client");
+				socket = waitForLogin(serverSocket);
+				System.out.println("Client connected to me");
+				LED.setWhiteOn();
+				while (socket.isConnected()) {
+					String message = readMessage();
+					// TODO handle message
+					String[] messages = message.split(" ");
+					for (int i = 0; i < messages.length; i++) {
+						message = messages[i];
+						if (message.length() > 1) {
+							System.out.println(message);
+						} else {
+							break;
+						}
+						if (message.equals("SchaufelradABAN")) {
+							if (controller.getMotorStatus(0) == 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 0 : AN ABWAERTS");
 								}
-							controller.setMotorStatus(0, -1);
-						}
-					}
-					if (message.equals("SchaufelradAUFAN")) {
-						if(controller.getMotorStatus(0) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 0 : AN AUFWAERTS");
+								controller.setMotorStatus(0, 1);
 							}
-							controller.setMotorStatus(0, 1);
 						}
-					}
-					if (message.equals("FoerderbandlinksAN")) {
-						if(controller.getMotorStatus(2) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 2 : AN LINKS");
+						if (message.equals("SchaufelradAUFAN")) {
+							if (controller.getMotorStatus(0) == 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 0 : AN AUFWAERTS");
+								}
+								controller.setMotorStatus(0, -1);
 							}
-							controller.setMotorStatus(2, -1);
 						}
-					}
-					if (message.equals("FoerderbandrechtsAN")) {
-						if(controller.getMotorStatus(2) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 2 : AN RECHTS");
+						if (message.equals("FliessbandDREHENLINKS")) {
+							if (controller.getMotorStatus(2) == 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 2 : AN LINKS");
+								}
+								controller.setMotorStatus(2, -1);
 							}
-							controller.setMotorStatus(2, 1);
 						}
-					}
-					if (message.equals("BaggerarmlinksAN")) {
-						if(controller.getMotorStatus(3) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 3 : AN LINKS");
+						if (message.equals("FliessbandDREHENRECHTS")) {
+							if (controller.getMotorStatus(2) == 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 2 : AN RECHTS");
+								}
+								controller.setMotorStatus(2, 1);
 							}
-							controller.setMotorStatus(3, -1);
 						}
-					}
-					if (message.equals("BaggerarmrechtsAN")) {
-						if(controller.getMotorStatus(3) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 3 : AN RECHTS");
+						if (message.equals("BaggerarmlinksAN")) {
+							if (controller.getMotorStatus(3) == 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 3 : AN LINKS");
+								}
+								controller.setMotorStatus(3, 1);
 							}
-							controller.setMotorStatus(3, 1);
 						}
-					}
-					if (message.equals("KettelinksvorAN")) {
-						if(controller.getMotorStatus(4) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 4 : AN VORWAERTS");
+						if (message.equals("BaggerarmrechtsAN")) {
+							if (controller.getMotorStatus(3) == 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 3 : AN RECHTS");
+								}
+								controller.setMotorStatus(3, -1);
 							}
-							controller.setMotorStatus(4, 1);
 						}
-					}
-					if (message.equals("KettelinkszurueckAN")) {
-						if(controller.getMotorStatus(4) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 4 : AN RUECKWAERTS");
+						if (message.equals("KettelinksvorAN")) {
+							if (controller.getMotorStatus(4) == 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 4 : AN VORWAERTS");
+								}
+								controller.setMotorStatus(4, 1);
 							}
-							controller.setMotorStatus(4, -1);
 						}
-					}
-					if (message.equals("KetterechtsvorAN")) {
-						if(controller.getMotorStatus(5) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 5 : AN VORWAERTS");
+						if (message.equals("KettelinkszurueckAN")) {
+							if (controller.getMotorStatus(4) == 0) {
+								LED.setOrangeOn();
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 4 : AN RUECKWAERTS");
+								}
+								controller.setMotorStatus(4, -1);
 							}
-							controller.setMotorStatus(5, 1);
 						}
-					}
-					if (message.equals("KetterechtszurueckAN")) {
-						if(controller.getMotorStatus(5) == 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 5 : AN RUECKWAERTS");
+						if (message.equals("KetterechtsvorAN")) {
+							if (controller.getMotorStatus(5) == 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 5 : AN VORWAERTS");
+								}
+								controller.setMotorStatus(5, 1);
 							}
-							controller.setMotorStatus(5, -1);
 						}
-					}
-					
-					if (message.equals("SchaufelradABAUS")) {
-						if(controller.getMotorStatus(0) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 0 : AUS");
+						if (message.equals("KetterechtszurueckAN")) {
+							if (controller.getMotorStatus(5) == 0) {
+								LED.setOrangeOn();
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 5 : AN RUECKWAERTS");
+								}
+								controller.setMotorStatus(5, -1);
 							}
-							controller.setMotorStatus(0, 0);
 						}
-					}
-					if (message.equals("SchaufelradAUFAUS")) {
-						if(controller.getDebug()) {
-							if(controller.getMotorStatus(0) != 0){
-								System.out.println("[KeyManager] Motor 0 : AUS");
-							}
-							controller.setMotorStatus(0, 0);
-						}
-					}
-					if (message.equals("FoerderbandlinksAUS")) {
-						if(controller.getMotorStatus(2) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 2 : AUS");
-							}
-							controller.setMotorStatus(2, 0);
-						}
-					}
-					if (message.equals("FoerderbandrechtsAUS")) {
-						if(controller.getMotorStatus(2) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 2 : AUS");
-							}
-							controller.setMotorStatus(2, 0);
-						}
-					}
-					if (message.equals("BaggerarmlinksAUS")) {
-						if(controller.getMotorStatus(3) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 3 : AUS");
-							}
-							controller.setMotorStatus(3, 0);
-						}
-					}
-					if (message.equals("BaggerarmrechtsAUS")) {
-						if(controller.getMotorStatus(3) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 3 : AUS");
-							}
-							controller.setMotorStatus(3, 0);
-						}
-					}
-					if (message.equals("KettelinksvorAUS")) {
-						if(controller.getMotorStatus(4) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 4 : AUS");
-							}
-							controller.setMotorStatus(4, 0);
-						}
-					}
-					if (message.equals("KettelinkszurueckAUS")) {
-						if(controller.getMotorStatus(4) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 4 : AUS");
-							}
-							controller.setMotorStatus(4, 0);
-						}
-					}
-					if (message.equals("KetterechtsvorAUS")) {
-						if(controller.getMotorStatus(5) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 5 : AUS");
-							}
-							controller.setMotorStatus(5, 0);
-						}
-					}
-					if (message.equals("KetterechtszurueckAUS")) {
-						if(controller.getMotorStatus(5) != 0){
-							if(controller.getDebug()) {
-								System.out.println("[KeyManager] Motor 5 : AUS");
-							}
-							controller.setMotorStatus(5, 0);
-						}
-					}
-					if (message.equals("SchaufelradAN")) {
-						if (controller.getMotorStatus(1) == 0){
-							controller.setMotorStatus(1, 1);
-						}
-						else {
-							controller.setMotorStatus(1, 0);
-						}
-					}
-					if (message.equals("SchaufelradAUS")) {
-						if (controller.getMotorStatus(1) == 0){
-							controller.setMotorStatus(1, 1);
-						}
-						else {
-							controller.setMotorStatus(1, 0);
-						}
-					}
-				}
-				if (message.equals("END")) {
-					System.out.println("Brudder er muste los");
-					socket = waitForLogin(serverSocket);
-				}
 
+						if (message.equals("SchaufelradABAUS")) {
+							if (controller.getMotorStatus(0) != 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 0 : AUS");
+								}
+								controller.setMotorStatus(0, 0);
+							}
+						}
+						if (message.equals("SchaufelradAUFAUS")) {
+							if (controller.getDebug()) {
+								if (controller.getMotorStatus(0) != 0) {
+									System.out
+											.println("[KeyManager] Motor 0 : AUS");
+								}
+								controller.setMotorStatus(0, 0);
+							}
+						}
+						if (message.equals("FliessbandDrehenLinksAUS")) {
+							if (controller.getMotorStatus(2) != 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 2 : AUS");
+								}
+								controller.setMotorStatus(2, 0);
+							}
+						}
+						if (message.equals("FliessbandDrehenRechtsAUS")) {
+							if (controller.getMotorStatus(2) != 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 2 : AUS");
+								}
+								controller.setMotorStatus(2, 0);
+							}
+						}
+						if (message.equals("BaggerarmlinksAUS")) {
+							if (controller.getMotorStatus(3) != 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 3 : AUS");
+								}
+								controller.setMotorStatus(3, 0);
+							}
+						}
+						if (message.equals("BaggerarmrechtsAUS")) {
+							if (controller.getMotorStatus(3) != 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 3 : AUS");
+								}
+								controller.setMotorStatus(3, 0);
+							}
+						}
+						if (message.equals("KettelinksvorAUS")) {
+							if (controller.getMotorStatus(4) != 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 4 : AUS");
+								}
+								controller.setMotorStatus(4, 0);
+							}
+						}
+						if (message.equals("KettelinkszurueckAUS")) {
+							if (controller.getMotorStatus(4) != 0) {
+								LED.setOff();
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 4 : AUS");
+								}
+								controller.setMotorStatus(4, 0);
+							}
+						}
+						if (message.equals("KetterechtsvorAUS")) {
+							if (controller.getMotorStatus(5) != 0) {
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 5 : AUS");
+								}
+								controller.setMotorStatus(5, 0);
+							}
+						}
+						if (message.equals("KetterechtszurueckAUS")) {
+							if (controller.getMotorStatus(5) != 0) {
+								LED.setOff();
+								if (controller.getDebug()) {
+									System.out
+											.println("[KeyManager] Motor 5 : AUS");
+								}
+								controller.setMotorStatus(5, 0);
+							}
+						}
+						if (message.equals("SchaufelradAN")) {
+							if (controller.getMotorStatus(1) == 0) {
+								controller.setMotorStatus(1, 1);
+							} else {
+								controller.setMotorStatus(1, 0);
+							}
+						}
+						if (message.equals("SchaufelradAUS")) {
+							if (controller.getMotorStatus(1) == 0) {
+								controller.setMotorStatus(1, 0);
+							} else {
+								controller.setMotorStatus(1, 0);
+							}
+						}
+					}
+					if (message.equals("END")) {
+						System.out.println("Brudder er muste los");
+						socket = waitForLogin(serverSocket);
+					}
+
+				}
+				System.out.println("COnection gone :c");
+			} catch (Exception e) {
+				System.out.println("Client disconnected");
+				
 			}
-			System.out.println("COnection gone :(");
-		} catch (Exception e) {
-			System.out.println("Socket setup failed (IO Exception)");
-			e.printStackTrace();
 		}
-
 	}
 
 }
