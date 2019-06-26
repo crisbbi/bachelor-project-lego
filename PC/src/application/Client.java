@@ -28,6 +28,7 @@ public class Client {
 		try {
 
 			 socket = new Socket(ip, port);
+			 System.out.println("Connected to Server");
 
 		} catch (Exception e) {
 			System.out.println("Couldnt connect to PI");
