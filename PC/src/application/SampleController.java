@@ -45,7 +45,7 @@ public class SampleController {
 				Image image = new Image(getClass().getResourceAsStream("pictures/notAus.png"));
 				view.getNotAusImageView().setImage(image);
 			}
-			else if (event.getCode() == KeyCode.G) {
+			else if (event.getCode() == KeyCode.F) {
 				client.sendMessage("SchaufelradAN");
 				// TODO Bildadresse einfügen
 				Image image = new Image(getClass().getResourceAsStream("pictures/schaufel_2.png"));
@@ -118,7 +118,7 @@ public class SampleController {
 				Image image = new Image(getClass().getResourceAsStream("pictures/notAus.png"));
 				view.getNotAusImageView().setImage(image);
 			}
-			else if (event.getCode() == KeyCode.G) {
+			else if (event.getCode() == KeyCode.F) {
 				client.sendMessage("SchaufelradAUS");
 				Image image = new Image(getClass().getResourceAsStream("pictures/schaufel_1.png"));
 				view.getSchaufelRadImageView().setImage(image);
