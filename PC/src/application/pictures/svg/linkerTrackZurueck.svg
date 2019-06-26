@@ -14,8 +14,8 @@
    viewBox="0 0 182.60681 198.84253"
    version="1.1"
    id="svg6424"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="Zeichnung (3. Kopie).svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="linkerTrackZurueck.svg"
    inkscape:export-filename="/home/christian/Dokumente/linkerTrackZurueck.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -60,15 +60,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="188.98721"
+     inkscape:cx="163.98721"
      inkscape:cy="398.18002"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="999"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="2160"
+     inkscape:window-height="1330"
+     inkscape:window-x="-12"
+     inkscape:window-y="-12"
      inkscape:window-maximized="1"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
@@ -82,7 +82,15 @@
      inkscape:snap-object-midpoints="false"
      inkscape:snap-center="false"
      inkscape:snap-text-baseline="true"
-     inkscape:snap-page="true" />
+     inkscape:snap-page="true"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="91.303407,198.84253"
+       orientation="1,0"
+       id="guide19"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <metadata
      id="metadata6421">
     <rdf:RDF>
@@ -146,13 +154,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:61.74107361px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.54352677;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-       x="79.396851"
-       y="207.5291"
+       x="79.094528"
+       y="210.17493"
        id="text13215-9-8-3"><tspan
          sodipodi:role="line"
          id="tspan13213-7-7-4"
-         x="79.396851"
-         y="207.5291"
-         style="fill:#ffffff;fill-opacity:1;stroke-width:1.54352677">A</tspan></text>
+         x="79.094528"
+         y="210.17493"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1.54352677">S</tspan></text>
   </g>
 </svg>

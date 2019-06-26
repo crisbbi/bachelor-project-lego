@@ -14,8 +14,8 @@
    viewBox="0 0 182.60681 198.84253"
    version="1.1"
    id="svg6424"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="Zeichnung (4. Kopie).svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="rechterTrackVor.svg"
    inkscape:export-filename="/home/christian/Dokumente/rechterTrackVor.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -60,15 +60,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="87.044695"
+     inkscape:cx="62.044695"
      inkscape:cy="415.30781"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="999"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="2160"
+     inkscape:window-height="1330"
+     inkscape:window-x="-12"
+     inkscape:window-y="-12"
      inkscape:window-maximized="1"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
@@ -82,7 +82,15 @@
      inkscape:snap-object-midpoints="true"
      inkscape:snap-center="true"
      inkscape:snap-text-baseline="true"
-     inkscape:snap-page="true" />
+     inkscape:snap-page="true"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="91.303405,198.84253"
+       orientation="1,0"
+       id="guide20"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <metadata
      id="metadata6421">
     <rdf:RDF>
@@ -148,14 +156,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:63.7518959px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;clip-rule:evenodd;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.59379745;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-       x="69.165024"
+       x="79.160095"
        y="212.82816"
        id="text13215-9-81-4"
        transform="scale(0.99785442,1.0021502)"><tspan
          sodipodi:role="line"
          id="tspan13213-7-9-00"
-         x="69.165024"
+         x="79.160095"
          y="212.82816"
-         style="fill:#ffffff;fill-opacity:1;stroke-width:1.59379745">W</tspan></text>
+         style="fill:#ffffff;fill-opacity:1;stroke-width:1.59379745">E</tspan></text>
   </g>
 </svg>
