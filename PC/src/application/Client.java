@@ -48,6 +48,7 @@ public class Client {
 			printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 			printWriter.print(message);
 			printWriter.flush();
+			System.out.println("I have sent the message"+ message);
 		} catch (IOException e) {
 			System.err.println("Couldn't send message to host");
 			e.printStackTrace();

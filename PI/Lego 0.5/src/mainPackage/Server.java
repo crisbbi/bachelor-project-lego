@@ -57,6 +57,7 @@ public class Server implements Runnable {
 	public void run() {
 		try {
 			socket = waitForLogin(serverSocket);
+			System.out.println("Client connected to me");
 			while (socket.isConnected()) {
 				String message = readMessage();
 				// TODO handle message
