@@ -46,7 +46,7 @@ public class Server implements Runnable {
 		BufferedReader bufferedReader = new BufferedReader(
 				new InputStreamReader(socket.getInputStream()));
 		// TODO set proper buffer size
-		
+
 		char[] buffer = new char[200];
 		int charCount = bufferedReader.read(buffer, 0, 200);
 		if (charCount < 1) {
@@ -54,7 +54,7 @@ public class Server implements Runnable {
 		}
 		String message = new String(buffer, 0, charCount);
 		return message;
-		//return bufferedReader.readLine();
+		// return bufferedReader.readLine();
 	}
 
 	public void run() {
@@ -66,7 +66,7 @@ public class Server implements Runnable {
 				LED.setWhiteOn();
 				while (socket.isConnected()) {
 					String message = readMessage();
-					//System.out.println(message);
+					// System.out.println(message);
 					// TODO handle message
 					String[] messages = message.split(" ");
 					for (int i = 0; i < messages.length; i++) {
@@ -122,7 +122,8 @@ public class Server implements Runnable {
 							}
 						}
 						if (message.equals("LICHT")) {
-							System.out.println("licht get aus, wir gen nach 1 haus");
+							System.out
+									.println("licht get aus, wir gen nach 1 haus");
 							LED.setOff();
 						}
 						if (message.equals("BaggerarmrechtsAN")) {
@@ -191,6 +192,32 @@ public class Server implements Runnable {
 								controller.setMotorStatus(0, 0);
 							}
 						}
+						if (message.equals("NOTAUS")) {
+							LED.setRedOn();
+							if (controller.getMotorStatus(0) != 0) {
+								controller.setMotorStatus(0, 0);
+							}
+							if (controller.getMotorStatus(1) != 0) {
+								controller.setMotorStatus(1, 0);
+							}
+							if (controller.getMotorStatus(2) != 0) {
+								controller.setMotorStatus(2, 0);
+							}
+							if (controller.getMotorStatus(3) != 0) {
+								controller.setMotorStatus(3, 0);
+							}
+							if (controller.getMotorStatus(4) != 0) {
+								controller.setMotorStatus(4, 0);
+							}
+							if (controller.getMotorStatus(5) != 0) {
+								controller.setMotorStatus(5, 0);
+							}
+
+						}
+						if (message.equals("NOTNOTAUS")) {
+							LED.setWhiteOn();
+
+						}
 						if (message.equals("FliessbandDrehenLinksAUS")) {
 							if (controller.getMotorStatus(2) != 0) {
 								if (controller.getDebug()) {
@@ -238,7 +265,8 @@ public class Server implements Runnable {
 						}
 						if (message.equals("KettelinkszurueckAUS")) {
 							if (controller.getMotorStatus(4) != 0) {
-								System.out.println("licht get aus, wir gen nach 1 haus");
+								System.out
+										.println("licht get aus, wir gen nach 1 haus");
 								LED.setWhiteOn();
 								if (controller.getDebug()) {
 									System.out
@@ -290,7 +318,7 @@ public class Server implements Runnable {
 				System.out.println("COnection gone :c");
 			} catch (Exception e) {
 				System.out.println("Client disconnected");
-				
+
 			}
 		}
 	}

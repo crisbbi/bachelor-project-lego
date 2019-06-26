@@ -40,7 +40,7 @@ public class SampleController {
 				view.getLichtImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.SPACE) {
-				
+				client.sendMessage("NOTAUS");
 				// TODO Bildadresse einfügen
 				Image image = new Image(getClass().getResourceAsStream("pictures/notAus.png"));
 				view.getNotAusImageView().setImage(image);
@@ -111,10 +111,12 @@ public class SampleController {
 				view.getRechterTrackZurueckImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.T) {
+				
 				Image image = new Image(getClass().getResourceAsStream("pictures/licht_1.png"));
 				view.getLichtImageView().setImage(image);
 			}
 			else if (event.getCode() == KeyCode.SPACE) {
+				client.sendMessage("NOTNOTAUS");
 				Image image = new Image(getClass().getResourceAsStream("pictures/notAus.png"));
 				view.getNotAusImageView().setImage(image);
 			}

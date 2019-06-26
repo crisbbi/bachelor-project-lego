@@ -42,6 +42,16 @@ public class LED {
 		p = Runtime.getRuntime().exec(command3); 
 		p.waitFor();
 	}
+	public static void setRedOn() throws IOException, InterruptedException{
+		Process p;
+		String[] command = {"sh", "/home/pi/Desktop/LED/Controll/LED1/start_red.sh"};
+		p = Runtime.getRuntime().exec(command); 
+		String[] command2 = {"sh", "/home/pi/Desktop/LED/Controll/LED2/start_red.sh"};
+		p = Runtime.getRuntime().exec(command2); 
+		String[] command3 = {"sh", "/home/pi/Desktop/LED/Controll/LED3/start_red.sh"};
+		p = Runtime.getRuntime().exec(command3); 
+		p.waitFor();
+	}
 	
 	public static void setOff() throws IOException, InterruptedException{
 		Process p;
