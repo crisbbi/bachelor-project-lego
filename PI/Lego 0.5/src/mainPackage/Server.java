@@ -122,6 +122,7 @@ public class Server implements Runnable {
 							}
 						}
 						if (message.equals("LICHT")) {
+							System.out.println("licht get aus, wir gen nach 1 haus");
 							LED.setOff();
 						}
 						if (message.equals("BaggerarmrechtsAN")) {
@@ -237,7 +238,8 @@ public class Server implements Runnable {
 						}
 						if (message.equals("KettelinkszurueckAUS")) {
 							if (controller.getMotorStatus(4) != 0) {
-								LED.setOff();
+								System.out.println("licht get aus, wir gen nach 1 haus");
+								LED.setWhiteOn();
 								if (controller.getDebug()) {
 									System.out
 											.println("[KeyManager] Motor 4 : AUS");
@@ -256,7 +258,7 @@ public class Server implements Runnable {
 						}
 						if (message.equals("KetterechtszurueckAUS")) {
 							if (controller.getMotorStatus(5) != 0) {
-								LED.setOff();
+								LED.setWhiteOn();
 								if (controller.getDebug()) {
 									System.out
 											.println("[KeyManager] Motor 5 : AUS");
