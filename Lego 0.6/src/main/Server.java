@@ -8,6 +8,8 @@ import java.net.Socket;
 import java.net.ServerSocket;
 import java.net.SocketAddress;
 
+import main.Controller;
+
 /**
  * @author Hendrik Kolterjahn, Simon Buchholz
  * 

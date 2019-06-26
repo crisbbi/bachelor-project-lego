@@ -1,4 +1,4 @@
-package main;
+package mainPackage;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -17,9 +17,9 @@ public class KeyManager extends JFrame implements KeyListener {/**
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
 		
-	public KeyManager(Controller controller){
-		controller.setMotorStatus(1, -1);
-		this.controller = controller;
+	public KeyManager(Controller ctrl){
+		ctrl.setMotorStatus(1, -1);
+		this.controller = ctrl;
 		JFrame frame = new JFrame();
 		JPanel p = new JPanel();
 		frame.add(p);

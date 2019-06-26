@@ -2,8 +2,7 @@ package driver;
 
 import java.io.*;
 import java.util.Timer;
-
-import mainPackage.*;
+import main.*;
 
 
 /**

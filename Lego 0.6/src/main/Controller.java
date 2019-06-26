@@ -3,6 +3,8 @@ package main;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
+import main.KeyManager;
+
 
 import driver.BluetoothDriver;
 

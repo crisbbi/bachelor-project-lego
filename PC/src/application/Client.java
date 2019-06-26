@@ -22,6 +22,7 @@ public class Client {
 	 * @param port
 	 * @throws  
 	 */
+	//:sout=#transcode{vcodec=WMV2,vb=800,acodec=wma2,ab=128,channels=2,samplerate=44100,scodec=none}:http{dst=:8080/moin.wmv} :no-sout-all :sout-keep
 	public Client(String ip, int port)   {
 
 		try {
