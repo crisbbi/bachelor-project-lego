@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/leftControl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black"
+        android:orientation="horizontal"
+        android:padding="15px">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10px"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/fliessbandLinks"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_marginBottom="10px"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/fliessbandlinks_1" />
+
+            <ImageView
+                android:id="@+id/schaufel"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/schaufel_1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/fliessbandRechts"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_marginBottom="10px"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/fliessbandlechts_1" />
+
+            <ImageView
+                android:id="@+id/licht"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/licht_1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/middleControl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@android:">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rightControl"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black"
+        android:padding="15px"
+        android:layout_alignParentRight="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="10px">
+
+            <ImageView
+                android:id="@+id/armDrehenUhrzeiger"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                app:srcCompat="@drawable/armdrehenuhrzeiger_1"
+                android:layout_marginBottom="10px"/>
+
+            <ImageView
+                android:id="@+id/armDrehenGegenUhrzeiger"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                app:srcCompat="@drawable/armdrehengegenuhrzeiger_1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/armHeben"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                app:srcCompat="@drawable/armheben_1"
+                android:layout_marginBottom="10px"/>
+
+            <ImageView
+                android:id="@+id/armSenken"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                app:srcCompat="@drawable/armsenken_1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
