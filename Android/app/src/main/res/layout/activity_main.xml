@@ -21,10 +21,11 @@
         android:paddingBottom="15px">
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/notAus"
             android:layout_width="150px"
             android:layout_height="150px"
             android:layout_weight="1"
+            android:clickable="true"
             app:srcCompat="@drawable/notaus" />
     </LinearLayout>
 
@@ -49,6 +50,7 @@
                 android:layout_height="150px"
                 android:layout_marginBottom="10px"
                 android:layout_weight="1"
+                android:clickable="true"
                 app:srcCompat="@drawable/fliessbandlinks_1" />
 
             <ImageView
@@ -56,6 +58,7 @@
                 android:layout_width="150px"
                 android:layout_height="150px"
                 android:layout_weight="1"
+                android:clickable="true"
                 app:srcCompat="@drawable/schaufel_1" />
         </LinearLayout>
 
@@ -70,6 +73,7 @@
                 android:layout_height="150px"
                 android:layout_marginBottom="10px"
                 android:layout_weight="1"
+                android:clickable="true"
                 app:srcCompat="@drawable/fliessbandlechts_1" />
 
             <ImageView
@@ -77,6 +81,7 @@
                 android:layout_width="150px"
                 android:layout_height="150px"
                 android:layout_weight="1"
+                android:clickable="true"
                 app:srcCompat="@drawable/licht_1" />
 
         </LinearLayout>
@@ -103,13 +108,15 @@
                 android:id="@+id/armDrehenUhrzeiger"
                 android:layout_width="150px"
                 android:layout_height="150px"
-                app:srcCompat="@drawable/armdrehenuhrzeiger_1"
-                android:layout_marginBottom="10px"/>
+                android:layout_marginBottom="10px"
+                android:clickable="true"
+                app:srcCompat="@drawable/armdrehenuhrzeiger_1" />
 
             <ImageView
                 android:id="@+id/armDrehenGegenUhrzeiger"
                 android:layout_width="150px"
                 android:layout_height="150px"
+                android:clickable="true"
                 app:srcCompat="@drawable/armdrehengegenuhrzeiger_1" />
         </LinearLayout>
 
@@ -122,13 +129,15 @@
                 android:id="@+id/armHeben"
                 android:layout_width="150px"
                 android:layout_height="150px"
-                app:srcCompat="@drawable/armheben_1"
-                android:layout_marginBottom="10px"/>
+                android:layout_marginBottom="10px"
+                android:clickable="true"
+                app:srcCompat="@drawable/armheben_1" />
 
             <ImageView
                 android:id="@+id/armSenken"
                 android:layout_width="150px"
                 android:layout_height="150px"
+                android:clickable="true"
                 app:srcCompat="@drawable/armsenken_1" />
         </LinearLayout>
     </LinearLayout>
