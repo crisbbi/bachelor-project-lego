@@ -37,16 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         armHeben = (ImageView) findViewById(R.id.armHeben);
         armSenken = (ImageView) findViewById(R.id.armSenken);
 
-        fliessbandLinks.setId(1);
-        fliessbandRechts.setId(2);
-        schaufel.setId(3);
-        licht.setId(4);
-        notAus.setId(5);
-        turmDrehenUhrzeiger.setId(6);
-        turmDrehenGegeneUhrzeiger.setId(7);
-        armHeben.setId(8);
-        armSenken.setId(9);
-
         fliessbandLinks.setOnTouchListener(this);
         fliessbandRechts.setOnTouchListener(this);
         schaufel.setOnTouchListener(this);
@@ -62,66 +52,66 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View v, MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             switch(v.getId()) {
-                case 1:
+                case R.id.fliessbandLinks:
                     fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_2);
                     break;
-                case 2:
+                case R.id.fliessbandRechts:
                     fliessbandRechts.setImageResource(R.drawable.fliessbandrechts_2);
                     break;
-                case 3:
+                case R.id.schaufel:
                     schaufel.setImageResource(R.drawable.schaufel_2);
                     break;
-                case 4:
+                case R.id.licht:
                     licht.setImageResource(R.drawable.licht_2);
                     break;
-                case 5:
+                case R.id.notAus:
                     notAus.setImageResource(R.drawable.notaus);
                     break;
-                case 6:
+                case R.id.armDrehenUhrzeiger:
                     turmDrehenUhrzeiger.setImageResource(R.drawable.armdreheuhrzeiger_2);
                     break;
-                case 7:
+                case R.id.armDrehenGegenUhrzeiger:
                     turmDrehenGegeneUhrzeiger.setImageResource(R.drawable.armdrehengegenuhrzeiger_2);
                     break;
-                case 8:
+                case R.id.armHeben:
                     armHeben.setImageResource(R.drawable.armheben_2);
                     break;
-                case 9:
+                case R.id.armSenken:
                     armSenken.setImageResource(R.drawable.armsenken_2);
                     break;
             }
         }
         else if(event.getAction() == MotionEvent.ACTION_UP) {
             switch (v.getId()) {
-                case 1:
+                case R.id.fliessbandLinks:
                     fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_1);
                     break;
-                case 2:
+                case R.id.fliessbandRechts:
                     fliessbandRechts.setImageResource(R.drawable.fliessbandlechts_1);
                     break;
-                case 3:
+                case R.id.schaufel:
                     schaufel.setImageResource(R.drawable.schaufel_1);
                     break;
-                case 4:
+                case R.id.licht:
                     licht.setImageResource(R.drawable.licht_1);
                     break;
-                case 5:
+                case R.id.notAus:
                     notAus.setImageResource(R.drawable.notaus);
                     break;
-                case 6:
+                case R.id.armDrehenUhrzeiger:
                     turmDrehenUhrzeiger.setImageResource(R.drawable.armdrehenuhrzeiger_1);
                     break;
-                case 7:
+                case R.id.armDrehenGegenUhrzeiger:
                     turmDrehenGegeneUhrzeiger.setImageResource(R.drawable.armdrehengegenuhrzeiger_1);
                     break;
-                case 8:
+                case R.id.armHeben:
                     armHeben.setImageResource(R.drawable.armheben_1);
                     break;
-                case 9:
+                case R.id.armSenken:
                     armSenken.setImageResource(R.drawable.armsenken_1);
                     break;
             }
         }
-        return false;
+        return true;
     }
 }
