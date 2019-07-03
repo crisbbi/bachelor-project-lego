@@ -1,4 +1,4 @@
-package com.example.baprojekt2019;
+package com.example.bpss2019;
 
 import org.junit.Test;
 
