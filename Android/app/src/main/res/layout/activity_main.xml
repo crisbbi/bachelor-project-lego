@@ -82,6 +82,29 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ketteLinksVor"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_marginBottom="10px"
+                android:layout_weight="1"
+                android:clickable="true"
+                app:srcCompat="@drawable/linkertrackvor_1" />
+
+            <ImageView
+                android:id="@+id/ketteLinksZurueck"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_weight="1"
+                android:clickable="true"
+                app:srcCompat="@drawable/linkertrackzurueck_1" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
