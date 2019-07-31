@@ -1,10 +1,12 @@
 package com.example.bpss2019;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -78,6 +80,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         //new Thread(connectionObserver).start();
         
         client = new Client("192.168.2.120");
+        //Toast.makeText(getApplicationContext(), "Toast", Toast.LENGTH_LONG).show();
+
+        Intent reachableConnectionIntent = new Intent(this, ConnectionIntentService.class);
+        reachableConnectionIntent.putExtra("ipAddress", "192.168.2.120");
+        ConnectionIntentService.enqueueWork(this, reachableConnectionIntent);
     }
 
     @Override
