@@ -2,12 +2,15 @@ package com.example.bpss2019;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 /**
@@ -18,6 +21,7 @@ public class Client implements Runnable {
     Socket socket;
     PrintWriter printWriter;
     String address;
+    int port;
     String message;
 
     /**
@@ -25,8 +29,9 @@ public class Client implements Runnable {
      * 
      * @param ip
      */
-    public Client(String ip) {
+    public Client(String ip, int passedPort) {
         address = ip;
+        port = passedPort;
     }
 
     /**
@@ -39,7 +44,7 @@ public class Client implements Runnable {
     @Override
     public void run() {
         try {
-            socket = new Socket(address, 80);
+            socket = new Socket(address, port);
             printWriter = new PrintWriter(socket.getOutputStream());
             printWriter.write(message);
             
