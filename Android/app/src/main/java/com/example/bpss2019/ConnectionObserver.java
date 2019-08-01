@@ -35,17 +35,6 @@ public class ConnectionObserver implements Runnable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } else if (socket != null && socket.isConnected() && showToast == true) {
-                Handler handler = new Handler(Looper.getMainLooper());
-
-                handler.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        Toast.makeText(MainActivity.getMainContext(), "Verbindung hergestellt", Toast.LENGTH_LONG).show();
-                        showToast = false;
-                    }
-                });
             }
         }
 
