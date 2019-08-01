@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     ImageView armSenken;
     ImageView linkerTrackVor;
     ImageView linkerTrackZurueck;
+    String IP = "192.168.2.120";
+    int port = 5013;
 
     Client client;
-
-    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +82,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         */ 
         //ConnectionObserver connectionObserver = new ConnectionObserver("192.168.2.120");
         //new Thread(connectionObserver).start();
-        
-        client = new Client("141.83.149.241", 5013);
+
+        client = new Client(IP, port);
+
     }
 
     @Override
@@ -186,14 +187,5 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void sendMessage(String message) {
         client.setMessage(message);
         new Thread(client).start();
-    }
-
-    /**
-     * Returns the static context of {@link MainActivity}
-     * 
-     * @return The static context of {@link MainActivity}
-     */
-    public static Context getMainContext(){
-        return context;
     }
 }

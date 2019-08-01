@@ -43,16 +43,20 @@ public class Client implements Runnable {
 
     @Override
     public void run() {
-        try {
-            socket = new Socket(address, port);
-            printWriter = new PrintWriter(socket.getOutputStream());
-            printWriter.write(message);
-            
-            printWriter.flush();
-            printWriter.close();
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(socket == null || socket.isClosed() || !socket.isBound()){
+                Log.d("Socket", "Creating new socket");
+            try {
+                socket = new Socket(address, port);
+                socket.setKeepAlive(true);
+                printWriter = new PrintWriter(socket.getOutputStream(), true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.d("Socket", "Not creating new socket");
         }
+
+        printWriter.println(message);
+        printWriter.flush();
     }
 }
