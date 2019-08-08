@@ -8,13 +8,6 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
 
     ImageView fliessbandLinks;
@@ -28,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     ImageView armSenken;
     ImageView linkerTrackVor;
     ImageView linkerTrackZurueck;
+    ImageView rechterTrackVor;
+    ImageView rechterTrackZurueck;
 
     Client client;
 
@@ -60,8 +55,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         turmDrehenGegeneUhrzeiger = (ImageView) findViewById(R.id.armDrehenGegenUhrzeiger);
         armHeben = (ImageView) findViewById(R.id.armHeben);
         armSenken = (ImageView) findViewById(R.id.armSenken);
-        linkerTrackVor = (ImageView) findViewById(R.id.ketteLinksVor);
-        linkerTrackZurueck = (ImageView) findViewById(R.id.ketteLinksZurueck);
+        linkerTrackVor = (ImageView) findViewById(R.id.leftTrackUp);
+        linkerTrackZurueck = (ImageView) findViewById(R.id.leftTrackDown);
+        rechterTrackVor = (ImageView) findViewById(R.id.rightTrackUp);
+        rechterTrackZurueck = (ImageView) findViewById((R.id.rightTrackDown));
+
 
         fliessbandLinks.setOnTouchListener(this);
         fliessbandRechts.setOnTouchListener(this);
@@ -74,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         armSenken.setOnTouchListener(this);
         linkerTrackVor.setOnTouchListener(this);
         linkerTrackZurueck.setOnTouchListener(this);
+        rechterTrackVor.setOnTouchListener(this);
+        rechterTrackZurueck.setOnTouchListener(this);
 
         /*
         The goal of the ConnectionObeserver was to monitor the state of the wifi connection
@@ -90,9 +90,21 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             switch (v.getId()) {
-                case R.id.ketteLinksVor:
-                    linkerTrackVor.setImageResource(R.drawable.linkertrackvor_2);
+                case R.id.leftTrackUp:
+                    linkerTrackVor.setImageResource(R.drawable.pfeil_2);
                     sendMessage("KettelinksvorAN");
+                    break;
+                case R.id.leftTrackDown:
+                    linkerTrackZurueck.setImageResource(R.drawable.pfeil_2);
+                    sendMessage("KettelinkszurueckAN");
+                    break;
+                case R.id.rightTrackUp:
+                    rechterTrackVor.setImageResource(R.drawable.pfeil_2);
+                    sendMessage("KetterechtsvorAN");
+                    break;
+                case R.id.rightTrackDown:
+                    rechterTrackZurueck.setImageResource(R.drawable.pfeil_2);
+                    sendMessage("KetterechtszurueckAN");
                     break;
                 case R.id.fliessbandLinks:
                     fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_2);
@@ -133,9 +145,21 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             }
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             switch (v.getId()) {
-                case R.id.ketteLinksVor:
-                    linkerTrackVor.setImageResource(R.drawable.linkertrackvor_1);
+                case R.id.leftTrackUp:
+                    linkerTrackVor.setImageResource(R.drawable.pfeil_1);
                     sendMessage("KettelinksvorAUS");
+                    break;
+                case R.id.leftTrackDown:
+                    linkerTrackZurueck.setImageResource(R.drawable.pfeil_1);
+                    sendMessage("KettelinkszurueckAUS");
+                    break;
+                case R.id.rightTrackUp:
+                    rechterTrackVor.setImageResource(R.drawable.pfeil_1);
+                    sendMessage(("KetterechtsvorAUS"));
+                    break;
+                case R.id.rightTrackDown:
+                    rechterTrackZurueck.setImageResource(R.drawable.pfeil_1);
+                    sendMessage("KetterechtszurueckAUS");
                     break;
                 case R.id.fliessbandLinks:
                     fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_1);
