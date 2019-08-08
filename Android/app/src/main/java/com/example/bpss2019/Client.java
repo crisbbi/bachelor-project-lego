@@ -23,14 +23,16 @@ public class Client implements Runnable {
     String address;
     int port;
     String message;
+    MulticastSender multicastSender;
 
     /**
-     * The constructor takes an IP address. 
+     * The constructor takes the Multicast sender and a port.
      * 
-     * @param ip
+     * @param sender The Multicast object
+     * @param passedPort The port for the socket connection
      */
-    public Client(String ip, int passedPort) {
-        address = ip;
+    public Client(MulticastSender sender, int passedPort) {
+        multicastSender = sender;
         port = passedPort;
     }
 
@@ -44,7 +46,7 @@ public class Client implements Runnable {
     @Override
     public void run() {
         try {
-            socket = new Socket(address, port);
+            socket = new Socket(multicastSender.getDiscoveredAddress(), port);
             printWriter = new PrintWriter(socket.getOutputStream());
             printWriter.write(message);
             

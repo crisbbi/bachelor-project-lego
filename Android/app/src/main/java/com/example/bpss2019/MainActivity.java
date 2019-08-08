@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     ImageView rechterTrackZurueck;
 
     Client client;
+    MulticastSender multicastSender;
 
     public static Context context;
 
@@ -35,16 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        
-        /*
-        The goal of this line was to be able to store the application 
-        context and to pass it to the Toast in the ConnectionObeserver.
-        Wanted to show a Toast from the ConnectionObeserver thread to 
-        show the state of the connection and found this approach as an 
-        idea from StackOverflow, but it didn't work out and things became
-        more and more complicated with a suggested Handler class.  
-        */
-        //context = getApplicationContext();
 
         fliessbandLinks = (ImageView) findViewById(R.id.fliessbandLinks);
         fliessbandRechts = (ImageView) findViewById(R.id.fliessbandRechts);
@@ -75,74 +66,71 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         rechterTrackVor.setOnTouchListener(this);
         rechterTrackZurueck.setOnTouchListener(this);
 
-        /*
-        The goal of the ConnectionObeserver was to monitor the state of the wifi connection
-        and to inform about it, as there is (for now) no other way for a normal user to know about it.
-        Doesn't work out well yet, so left it as comment.  
-        */ 
-        //ConnectionObserver connectionObserver = new ConnectionObserver("192.168.2.120");
-        //new Thread(connectionObserver).start();
+        multicastSender = new MulticastSender();
+        new Thread(multicastSender).start();
         
-        client = new Client("141.83.149.241", 5013);
+        client = new Client(multicastSender, 5013);
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.leftTrackUp:
-                    linkerTrackVor.setImageResource(R.drawable.pfeil_2);
-                    sendMessage("KettelinksvorAN");
-                    break;
-                case R.id.leftTrackDown:
-                    linkerTrackZurueck.setImageResource(R.drawable.pfeil_2);
-                    sendMessage("KettelinkszurueckAN");
-                    break;
-                case R.id.rightTrackUp:
-                    rechterTrackVor.setImageResource(R.drawable.pfeil_2);
-                    sendMessage("KetterechtsvorAN");
-                    break;
-                case R.id.rightTrackDown:
-                    rechterTrackZurueck.setImageResource(R.drawable.pfeil_2);
-                    sendMessage("KetterechtszurueckAN");
-                    break;
-                case R.id.fliessbandLinks:
-                    fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_2);
-                    sendMessage("fliessbandLinksAN");
-                    break;
-                case R.id.fliessbandRechts:
-                    fliessbandRechts.setImageResource(R.drawable.fliessbandrechts_2);
-                    sendMessage("fliessbandRechtsAN");
-                    break;
-                case R.id.schaufel:
-                    schaufel.setImageResource(R.drawable.schaufel_2);
-                    sendMessage("schaufelAN");
-                    break;
-                case R.id.licht:
-                    licht.setImageResource(R.drawable.licht_2);
-                    sendMessage("lichtAN");
-                    break;
-                case R.id.notAus:
-                    notAus.setImageResource(R.drawable.notaus);
-                    sendMessage("notAUS");
-                    break;
-                case R.id.armDrehenUhrzeiger:
-                    turmDrehenUhrzeiger.setImageResource(R.drawable.armdreheuhrzeiger_2);
-                    sendMessage("armDrehenUhrzeigerAN");
-                    break;
-                case R.id.armDrehenGegenUhrzeiger:
-                    turmDrehenGegeneUhrzeiger.setImageResource(R.drawable.armdrehengegenuhrzeiger_2);
-                    sendMessage("armDrehenGegenUhrzeigerAN");
-                    break;
-                case R.id.armHeben:
-                    armHeben.setImageResource(R.drawable.armheben_2);
-                    sendMessage("armHebenAN");
-                    break;
-                case R.id.armSenken:
-                    armSenken.setImageResource(R.drawable.armsenken_2);
-                    sendMessage("armSenkenAN");
-                    break;
-            }
+            if(multicastSender.getDiscoveredAddress() != "") {
+                switch (v.getId()) {
+                    case R.id.leftTrackUp:
+                        linkerTrackVor.setImageResource(R.drawable.pfeil_2);
+                        sendMessage("KettelinksvorAN");
+                        break;
+                    case R.id.leftTrackDown:
+                        linkerTrackZurueck.setImageResource(R.drawable.pfeil_2);
+                        sendMessage("KettelinkszurueckAN");
+                        break;
+                    case R.id.rightTrackUp:
+                        rechterTrackVor.setImageResource(R.drawable.pfeil_2);
+                        sendMessage("KetterechtsvorAN");
+                        break;
+                    case R.id.rightTrackDown:
+                        rechterTrackZurueck.setImageResource(R.drawable.pfeil_2);
+                        sendMessage("KetterechtszurueckAN");
+                        break;
+                    case R.id.fliessbandLinks:
+                        fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_2);
+                        sendMessage("fliessbandLinksAN");
+                        break;
+                    case R.id.fliessbandRechts:
+                        fliessbandRechts.setImageResource(R.drawable.fliessbandrechts_2);
+                        sendMessage("fliessbandRechtsAN");
+                        break;
+                    case R.id.schaufel:
+                        schaufel.setImageResource(R.drawable.schaufel_2);
+                        sendMessage("schaufelAN");
+                        break;
+                    case R.id.licht:
+                        licht.setImageResource(R.drawable.licht_2);
+                        sendMessage("lichtAN");
+                        break;
+                    case R.id.notAus:
+                        notAus.setImageResource(R.drawable.notaus);
+                        sendMessage("notAUS");
+                        break;
+                    case R.id.armDrehenUhrzeiger:
+                        turmDrehenUhrzeiger.setImageResource(R.drawable.armdreheuhrzeiger_2);
+                        sendMessage("armDrehenUhrzeigerAN");
+                        break;
+                    case R.id.armDrehenGegenUhrzeiger:
+                        turmDrehenGegeneUhrzeiger.setImageResource(R.drawable.armdrehengegenuhrzeiger_2);
+                        sendMessage("armDrehenGegenUhrzeigerAN");
+                        break;
+                    case R.id.armHeben:
+                        armHeben.setImageResource(R.drawable.armheben_2);
+                        sendMessage("armHebenAN");
+                        break;
+                    case R.id.armSenken:
+                        armSenken.setImageResource(R.drawable.armsenken_2);
+                        sendMessage("armSenkenAN");
+                        break;
+                    }
+                }
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             switch (v.getId()) {
                 case R.id.leftTrackUp:
