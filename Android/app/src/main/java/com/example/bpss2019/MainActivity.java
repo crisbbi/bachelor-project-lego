@@ -1,6 +1,5 @@
 package com.example.bpss2019;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         linkerTrackZurueck = (ImageView) findViewById(R.id.leftTrackDown);
         rechterTrackVor = (ImageView) findViewById(R.id.rightTrackUp);
         rechterTrackZurueck = (ImageView) findViewById((R.id.rightTrackDown));
-
 
         fliessbandLinks.setOnTouchListener(this);
         fliessbandRechts.setOnTouchListener(this);
@@ -170,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
      */
     public void changeImageSendCommand_orNotify(ImageView imageView, int UIicon, String command) {
         imageView.setImageResource(UIicon);
-        if (multicastSender.getDiscoveredAddress() != "") {
+        if (!client.isIPempty()) {
             client.sendMessage(command);
         } else {
             Toast.makeText(this, "Keine Verbindung zum Bagger", Toast.LENGTH_SHORT).show();
@@ -186,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
      */
     public void changeImageSendCommand_notNotify(ImageView imageView, int UIicon, String command) {
         imageView.setImageResource(UIicon);
-        if (multicastSender.getDiscoveredAddress() != "") {
+        if (!client.isIPempty()) {
             client.sendMessage(command);
         }
     }
