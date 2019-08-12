@@ -17,7 +17,8 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 /**
- * Client represents a new Socket Thread that connects to the Server and sends a message to it.
+ * Client represents a manager that starts a multicast with MulticastSender to search for the Server as a thread and delegates the commands to be sent by a CommandSender,
+ * which is also launched as a separate thread.
  */
 public class Client implements Runnable {
 
