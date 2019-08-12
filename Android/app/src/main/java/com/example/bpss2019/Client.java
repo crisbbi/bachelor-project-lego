@@ -1,19 +1,11 @@
 package com.example.bpss2019;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
-
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
-import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 /**
@@ -22,12 +14,12 @@ import java.net.UnknownHostException;
  */
 public class Client implements Runnable {
 
-    Socket socket;
-    PrintWriter printWriter;
+    private Socket socket;
+    private PrintWriter printWriter;
     String address;
-    int port;
+    private int port;
     String message;
-    MulticastSender multicastSender;
+    private MulticastSender multicastSender;
 
     /**
      * The constructor takes the Multicast sender and a port.
@@ -56,7 +48,7 @@ public class Client implements Runnable {
 
     @Override
     public void run() {
-        String data = "";
+        String data;
         while (true) {
             try {
                 socket = new Socket(multicastSender.getDiscoveredAddress(), port);
@@ -65,7 +57,7 @@ public class Client implements Runnable {
 
                 printWriter = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                System.out.println("Sucessfully connected");
+                System.out.println("Successfully connected");
 
                 while ((data = in.readLine()) != null) {
                     System.out.println(data);

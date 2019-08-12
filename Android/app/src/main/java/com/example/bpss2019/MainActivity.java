@@ -10,22 +10,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
 
-    ImageView fliessbandLinks;
-    ImageView fliessbandRechts;
-    ImageView schaufel;
-    ImageView licht;
-    ImageView notAus;
-    ImageView turmDrehenUhrzeiger;
-    ImageView turmDrehenGegeneUhrzeiger;
-    ImageView armHeben;
-    ImageView armSenken;
-    ImageView linkerTrackVor;
-    ImageView linkerTrackZurueck;
-    ImageView rechterTrackVor;
-    ImageView rechterTrackZurueck;
+    private ImageView fliessbandLinks;
+    private ImageView fliessbandRechts;
+    private ImageView schaufel;
+    private ImageView licht;
+    private ImageView notAus;
+    private ImageView turmDrehenUhrzeiger;
+    private ImageView turmDrehenGegeneUhrzeiger;
+    private ImageView armHeben;
+    private ImageView armSenken;
+    private ImageView linkerTrackVor;
+    private ImageView linkerTrackZurueck;
+    private ImageView rechterTrackVor;
+    private ImageView rechterTrackZurueck;
 
-    Client client;
-    MulticastSender multicastSender;
+    private Client client;
+    private MulticastSender multicastSender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,19 +35,19 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-        fliessbandLinks = (ImageView) findViewById(R.id.fliessbandLinks);
-        fliessbandRechts = (ImageView) findViewById(R.id.fliessbandRechts);
-        schaufel = (ImageView) findViewById(R.id.schaufel);
-        licht = (ImageView) findViewById(R.id.licht);
-        notAus = (ImageView) findViewById(R.id.notAus);
-        turmDrehenUhrzeiger = (ImageView) findViewById(R.id.armDrehenUhrzeiger);
-        turmDrehenGegeneUhrzeiger = (ImageView) findViewById(R.id.armDrehenGegenUhrzeiger);
-        armHeben = (ImageView) findViewById(R.id.armHeben);
-        armSenken = (ImageView) findViewById(R.id.armSenken);
-        linkerTrackVor = (ImageView) findViewById(R.id.leftTrackUp);
-        linkerTrackZurueck = (ImageView) findViewById(R.id.leftTrackDown);
-        rechterTrackVor = (ImageView) findViewById(R.id.rightTrackUp);
-        rechterTrackZurueck = (ImageView) findViewById((R.id.rightTrackDown));
+        fliessbandLinks = findViewById(R.id.fliessbandLinks);
+        fliessbandRechts = findViewById(R.id.fliessbandRechts);
+        schaufel = findViewById(R.id.schaufel);
+        licht = findViewById(R.id.licht);
+        notAus = findViewById(R.id.notAus);
+        turmDrehenUhrzeiger = findViewById(R.id.armDrehenUhrzeiger);
+        turmDrehenGegeneUhrzeiger = findViewById(R.id.armDrehenGegenUhrzeiger);
+        armHeben = findViewById(R.id.armHeben);
+        armSenken = findViewById(R.id.armSenken);
+        linkerTrackVor = findViewById(R.id.leftTrackUp);
+        linkerTrackZurueck = findViewById(R.id.leftTrackDown);
+        rechterTrackVor = findViewById(R.id.rightTrackUp);
+        rechterTrackZurueck = findViewById((R.id.rightTrackDown));
 
         fliessbandLinks.setOnTouchListener(this);
         fliessbandRechts.setOnTouchListener(this);
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
      * @param UIicon The new image
      * @param command The command to send via Wifi
      */
-    public void changeImageSendCommand_orNotify(ImageView imageView, int UIicon, String command) {
+    private void changeImageSendCommand_orNotify(ImageView imageView, int UIicon, String command) {
         imageView.setImageResource(UIicon);
         if (!client.isIPempty()) {
             client.sendMessage(command);
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
      * @param UIicon The new image
      * @param command The command to send via Wifi
      */
-    public void changeImageSendCommand_notNotify(ImageView imageView, int UIicon, String command) {
+    private void changeImageSendCommand_notNotify(ImageView imageView, int UIicon, String command) {
         imageView.setImageResource(UIicon);
         if (!client.isIPempty()) {
             client.sendMessage(command);

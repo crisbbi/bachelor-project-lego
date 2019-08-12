@@ -1,14 +1,9 @@
 package com.example.bpss2019;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
