@@ -5,11 +5,14 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
@@ -34,27 +37,47 @@ public class Client implements Runnable {
     public Client(MulticastSender sender, int passedPort) {
         multicastSender = sender;
         port = passedPort;
+        sender.setMessageToMulticast("Hi Server");
+        Thread senderThread = new Thread(multicastSender);
+        senderThread.start();
     }
 
     /**
      * Sets the message that the Client Thread shall send to the Server.
      */
-    public void setMessage(String messageToSend) {
-        message = messageToSend;
+    public void sendMessage(String messageToSend) {
+        CommandSender commandSender = new CommandSender(printWriter);
+        commandSender.setCommandToSend(messageToSend);
+
+        Thread sendCommandThread = new Thread(commandSender);
+        sendCommandThread.start();
     }
 
     @Override
     public void run() {
-        try {
-            socket = new Socket(multicastSender.getDiscoveredAddress(), port);
-            printWriter = new PrintWriter(socket.getOutputStream());
-            printWriter.write(message);
-            
-            printWriter.flush();
-            printWriter.close();
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        String data = "";
+        while (true) {
+            try {
+                socket = new Socket(multicastSender.getDiscoveredAddress(), port);
+                System.out.println("Socket: " + socket);
+                System.out.println("[CLIENT]Connected to Server: " + socket.getInetAddress() + ":" + socket.getPort());
+
+                printWriter = new PrintWriter(socket.getOutputStream(), true);
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                System.out.println("Sucessfully connected");
+
+                while ((data = in.readLine()) != null) {
+                    System.out.println(data);
+                }
+            } catch (SocketException e) {
+                System.out.println("Server lost.");
+                multicastSender.setDiscoveredAddress("");
+                multicastSender.searchServer();
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

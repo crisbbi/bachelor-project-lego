@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     Client client;
     MulticastSender multicastSender;
-
-    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,123 +66,95 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         rechterTrackZurueck.setOnTouchListener(this);
 
         multicastSender = new MulticastSender();
-        new Thread(multicastSender).start();
-        
         client = new Client(multicastSender, 5013);
+        Thread clientThread = new Thread(client);
+        clientThread.start();
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if(multicastSender.getDiscoveredAddress() != "") {
-                switch (v.getId()) {
-                    case R.id.leftTrackUp:
-                        linkerTrackVor.setImageResource(R.drawable.pfeil_2);
-                        sendMessage("KettelinksvorAN");
-                        break;
-                    case R.id.leftTrackDown:
-                        linkerTrackZurueck.setImageResource(R.drawable.pfeil_2);
-                        sendMessage("KettelinkszurueckAN");
-                        break;
-                    case R.id.rightTrackUp:
-                        rechterTrackVor.setImageResource(R.drawable.pfeil_2);
-                        sendMessage("KetterechtsvorAN");
-                        break;
-                    case R.id.rightTrackDown:
-                        rechterTrackZurueck.setImageResource(R.drawable.pfeil_2);
-                        sendMessage("KetterechtszurueckAN");
-                        break;
-                    case R.id.fliessbandLinks:
-                        fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_2);
-                        sendMessage("fliessbandLinksAN");
-                        break;
-                    case R.id.fliessbandRechts:
-                        fliessbandRechts.setImageResource(R.drawable.fliessbandrechts_2);
-                        sendMessage("fliessbandRechtsAN");
-                        break;
-                    case R.id.schaufel:
-                        schaufel.setImageResource(R.drawable.schaufel_2);
-                        sendMessage("schaufelAN");
-                        break;
-                    case R.id.licht:
-                        licht.setImageResource(R.drawable.licht_2);
-                        sendMessage("lichtAN");
-                        break;
-                    case R.id.notAus:
-                        notAus.setImageResource(R.drawable.notaus);
-                        sendMessage("notAUS");
-                        break;
-                    case R.id.armDrehenUhrzeiger:
-                        turmDrehenUhrzeiger.setImageResource(R.drawable.armdreheuhrzeiger_2);
-                        sendMessage("armDrehenUhrzeigerAN");
-                        break;
-                    case R.id.armDrehenGegenUhrzeiger:
-                        turmDrehenGegeneUhrzeiger.setImageResource(R.drawable.armdrehengegenuhrzeiger_2);
-                        sendMessage("armDrehenGegenUhrzeigerAN");
-                        break;
-                    case R.id.armHeben:
-                        armHeben.setImageResource(R.drawable.armheben_2);
-                        sendMessage("armHebenAN");
-                        break;
-                    case R.id.armSenken:
-                        armSenken.setImageResource(R.drawable.armsenken_2);
-                        sendMessage("armSenkenAN");
-                        break;
-                    }
-                }
+            switch (v.getId()) {
+                case R.id.leftTrackUp:
+                    changeImageSendCommand_orNotify(linkerTrackVor, R.drawable.pfeil_2, "KettelinksvorAN");
+                    break;
+                case R.id.leftTrackDown:
+                    changeImageSendCommand_orNotify(linkerTrackZurueck, R.drawable.pfeil_2, "KettelinkszurueckAN");
+                    break;
+                case R.id.rightTrackUp:
+                    changeImageSendCommand_orNotify(rechterTrackVor, R.drawable.pfeil_2, "KetterechtsvorAN");
+                    break;
+                case R.id.rightTrackDown:
+                    changeImageSendCommand_orNotify(rechterTrackZurueck, R.drawable.pfeil_2, "KetterechtszurueckAN");
+                    break;
+                case R.id.fliessbandLinks:
+                    changeImageSendCommand_orNotify(fliessbandLinks, R.drawable.fliessbandlinks_2, "fliessbandLinksAN");
+                    break;
+                case R.id.fliessbandRechts:
+                    changeImageSendCommand_orNotify(fliessbandRechts, R.drawable.fliessbandrechts_2, "fliessbandRechtsAN");
+                    break;
+                case R.id.schaufel:
+                    changeImageSendCommand_orNotify(schaufel, R.drawable.schaufel_2, "schaufelAN");
+                    break;
+                case R.id.licht:
+                    changeImageSendCommand_orNotify(licht, R.drawable.licht_2, "lichtAN");
+                    break;
+                case R.id.notAus:
+                    changeImageSendCommand_orNotify(notAus, R.drawable.notaus, "notAUS");
+                    break;
+                case R.id.armDrehenUhrzeiger:
+                    changeImageSendCommand_orNotify(turmDrehenUhrzeiger, R.drawable.armdreheuhrzeiger_2, "armDrehenUhrzeigerAN");
+                    break;
+                case R.id.armDrehenGegenUhrzeiger:
+                    changeImageSendCommand_orNotify(turmDrehenGegeneUhrzeiger, R.drawable.armdrehengegenuhrzeiger_2, "armDrehenGegenUhrzeigerAN");
+                    break;
+                case R.id.armHeben:
+                    changeImageSendCommand_orNotify(armHeben, R.drawable.armheben_2, "armHebenAN");
+                    break;
+                case R.id.armSenken:
+                    changeImageSendCommand_orNotify(armSenken, R.drawable.armsenken_2, "armSenkenAN");
+                    break;
+            }
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             switch (v.getId()) {
                 case R.id.leftTrackUp:
-                    linkerTrackVor.setImageResource(R.drawable.pfeil_1);
-                    sendMessage("KettelinksvorAUS");
+                    changeImageSendCommand_notNotify(linkerTrackVor, R.drawable.pfeil_1, "KettelinksvorAUS");
                     break;
                 case R.id.leftTrackDown:
-                    linkerTrackZurueck.setImageResource(R.drawable.pfeil_1);
-                    sendMessage("KettelinkszurueckAUS");
+                    changeImageSendCommand_notNotify(linkerTrackZurueck, R.drawable.pfeil_1, "KettelinkszurueckAUS");
                     break;
                 case R.id.rightTrackUp:
-                    rechterTrackVor.setImageResource(R.drawable.pfeil_1);
-                    sendMessage(("KetterechtsvorAUS"));
+                    changeImageSendCommand_notNotify(rechterTrackVor, R.drawable.pfeil_1, "KetterechtsvorAUS");
                     break;
                 case R.id.rightTrackDown:
-                    rechterTrackZurueck.setImageResource(R.drawable.pfeil_1);
-                    sendMessage("KetterechtszurueckAUS");
+                    changeImageSendCommand_notNotify(rechterTrackZurueck, R.drawable.pfeil_1, "KetterechtszurueckAUS");
                     break;
                 case R.id.fliessbandLinks:
-                    fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_1);
-                    sendMessage("fliessbandLinksAUS");
+                    changeImageSendCommand_notNotify(fliessbandLinks, R.drawable.fliessbandlinks_1, "fliessbandLinksAUS");
                     break;
                 case R.id.fliessbandRechts:
-                    fliessbandRechts.setImageResource(R.drawable.fliessbandlechts_1);
-                    sendMessage("fliessbandRechtsAUS");
+                    changeImageSendCommand_notNotify(fliessbandRechts, R.drawable.fliessbandlechts_1, "fliessbandRechtsAUS");
                     break;
                 case R.id.schaufel:
-                    schaufel.setImageResource(R.drawable.schaufel_1);
-                    sendMessage("schaufelAUS");
+                    changeImageSendCommand_notNotify(schaufel, R.drawable.schaufel_1, "schaufelAUS");
                     break;
                 case R.id.licht:
-                    licht.setImageResource(R.drawable.licht_1);
-                    sendMessage("lichtAUS");
+                    changeImageSendCommand_notNotify(licht, R.drawable.licht_1, "lichtAUS");
                     break;
                 case R.id.notAus:
-                    notAus.setImageResource(R.drawable.notaus);
-                    sendMessage("notAUS");
+                    changeImageSendCommand_notNotify(notAus, R.drawable.notaus, "notAUS");
                     break;
                 case R.id.armDrehenUhrzeiger:
-                    turmDrehenUhrzeiger.setImageResource(R.drawable.armdrehenuhrzeiger_1);
-                    sendMessage("armDrehenUhrzeigerAUS");
+                    changeImageSendCommand_notNotify(turmDrehenUhrzeiger, R.drawable.armdrehenuhrzeiger_1, "armDrehenUhrzeigerAUS");
                     break;
                 case R.id.armDrehenGegenUhrzeiger:
-                    turmDrehenGegeneUhrzeiger.setImageResource(R.drawable.armdrehengegenuhrzeiger_1);
-                    sendMessage("armDrehenGegenUhrzeigerAUS");
+                    changeImageSendCommand_notNotify(turmDrehenGegeneUhrzeiger, R.drawable.armdrehengegenuhrzeiger_1, "armDrehenGegenUhrzeigerAUS");
                     break;
                 case R.id.armHeben:
-                    armHeben.setImageResource(R.drawable.armheben_1);
-                    sendMessage("armHebenAUS");
+                    changeImageSendCommand_notNotify(armHeben, R.drawable.armheben_1, "armHebenAUS");
                     break;
                 case R.id.armSenken:
-                    armSenken.setImageResource(R.drawable.armsenken_1);
-                    sendMessage("armSenkenAUS");
+                    changeImageSendCommand_notNotify(armSenken, R.drawable.armsenken_1, "armSenkenAUS");
                     break;
             }
         }
@@ -191,21 +162,32 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     /**
-     * Sets the message that the Client shall send to the Server and starts the socket in the Client class as a new Thread
-     * 
-     * @param message The message to be sent.
+     * Change the button image and send command via Wifi if the MulticastSender contains a Server-IP as String. Otherwise show a Toast.
+     *
+     * @param imageView The ImageView on which to replace the image
+     * @param UIicon The new image
+     * @param command The command to send via Wifi
      */
-    public void sendMessage(String message) {
-        client.setMessage(message);
-        new Thread(client).start();
+    public void changeImageSendCommand_orNotify(ImageView imageView, int UIicon, String command) {
+        imageView.setImageResource(UIicon);
+        if (multicastSender.getDiscoveredAddress() != "") {
+            client.sendMessage(command);
+        } else {
+            Toast.makeText(this, "Keine Verbindung zum Bagger", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
-     * Returns the static context of {@link MainActivity}
-     * 
-     * @return The static context of {@link MainActivity}
+     * Change the button image and send command via Wifi if the MulticastSender contains a Server-IP as String.
+     *
+     * @param imageView The ImageView on which to replace the image
+     * @param UIicon The new image
+     * @param command The command to send via Wifi
      */
-    public static Context getMainContext(){
-        return context;
+    public void changeImageSendCommand_notNotify(ImageView imageView, int UIicon, String command) {
+        imageView.setImageResource(UIicon);
+        if (multicastSender.getDiscoveredAddress() != "") {
+            client.sendMessage(command);
+        }
     }
 }
