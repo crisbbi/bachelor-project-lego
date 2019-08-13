@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/middleControl"
+        android:layout_alignBottom="@+id/leftTrackControl"
+        android:layout_marginBottom="-129dp"
+        android:visibility="visible" />
+
     <LinearLayout
         android:id="@+id/rightTrackControl"
         android:layout_width="match_parent"

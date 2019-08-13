@@ -3,6 +3,7 @@ package com.example.bpss2019;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         linkerTrackZurueck.setOnTouchListener(this);
         rechterTrackVor.setOnTouchListener(this);
         rechterTrackZurueck.setOnTouchListener(this);
+
+        WebView webView = (WebView) findViewById(R.id.webView);
+        webView.loadUrl("https://www.google.de/");
 
         multicastSender = new MulticastSender();
         client = new Client(multicastSender, 5013);
