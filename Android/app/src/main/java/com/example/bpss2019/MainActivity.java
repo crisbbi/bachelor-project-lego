@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private ImageView rechterTrackVor;
     private ImageView rechterTrackZurueck;
 
+    private WebView webView;
+
     private Client client;
     private MulticastSender multicastSender;
 
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         rechterTrackVor = findViewById(R.id.rightTrackUp);
         rechterTrackZurueck = findViewById((R.id.rightTrackDown));
 
+        webView = findViewById(R.id.webView);
+
         fliessbandLinks.setOnTouchListener(this);
         fliessbandRechts.setOnTouchListener(this);
         schaufel.setOnTouchListener(this);
@@ -68,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         client = new Client(multicastSender, 5013);
         Thread clientThread = new Thread(client);
         clientThread.start();
+        WebViewCamera wvCamera = new WebViewCamera(client, webView);
+        Thread cameraThread = new Thread(wvCamera);
+        cameraThread.start();
     }
 
     @Override
