@@ -105,4 +105,8 @@ public class MulticastSender implements Runnable {
     public void run() {
         searchServer();
     }
+
+    public String getIP () {
+        return serverIP;
+    }
 }
