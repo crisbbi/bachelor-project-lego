@@ -77,4 +77,8 @@ public class Client implements Runnable {
     public boolean isIPempty(){
         return multicastSender.getDiscoveredAddress().equals("");
     }
+
+    public String getIP () {
+        return address;
+    }
 }
