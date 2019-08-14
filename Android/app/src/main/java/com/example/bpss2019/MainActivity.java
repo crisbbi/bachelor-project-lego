@@ -64,11 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         rechterTrackVor.setOnTouchListener(this);
         rechterTrackZurueck.setOnTouchListener(this);
 
-        WebView webView = (WebView) findViewById(R.id.webView);
-        webView.loadUrl("https://www.google.de/");
-
         multicastSender = new MulticastSender();
         client = new Client(multicastSender, 5013);
+        WebView webView = (WebView) findViewById(R.id.webView);
+        webView.loadUrl("https://www.google.de/");
         Thread clientThread = new Thread(client);
         clientThread.start();
     }
