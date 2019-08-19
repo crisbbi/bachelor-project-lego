@@ -79,6 +79,6 @@ public class Client implements Runnable {
     }
 
     public String getIP () {
-        return address;
+        return multicastSender.getDiscoveredAddress();
     }
 }
