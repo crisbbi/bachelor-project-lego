@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -72,9 +73,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         client = new Client(multicastSender, 5013);
         Thread clientThread = new Thread(client);
         clientThread.start();
-        WebViewCamera wvCamera = new WebViewCamera(client, webView);
-        Thread cameraThread = new Thread(wvCamera);
-        cameraThread.start();
+
+        webView.setWebViewClient(new InnerBrowser());
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("http://google.de");
+    }
+
+    private class InnerBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
     @Override
@@ -178,6 +188,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         imageView.setImageResource(UIicon);
         if (!client.isIPempty()) {
             client.sendMessage(command);
+
+            webView.setWebViewClient(new InnerBrowser());
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.loadUrl("http://google.de");
         } else {
             Toast.makeText(this, "Keine Verbindung zum Bagger", Toast.LENGTH_SHORT).show();
         }
