@@ -1,5 +1,7 @@
 package com.example.bpss2019;
 
+import android.os.Handler;
+import android.os.Looper;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,12 +9,13 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Observable;
 
 /**
  * Client represents a manager that starts a multicast with MulticastSender to search for the Server as a thread and delegates the commands to be sent by a CommandSender,
  * which is also launched as a separate thread.
  */
-public class Client implements Runnable {
+public class Client extends Observable implements Runnable {
 
     private Socket socket;
     private PrintWriter printWriter;
@@ -27,9 +30,10 @@ public class Client implements Runnable {
      * @param sender The Multicast object
      * @param passedPort The port for the socket connection
      */
-    public Client(MulticastSender sender, int passedPort) {
+    public Client(MulticastSender sender, int passedPort, MainActivity mainActivity) {
         multicastSender = sender;
         port = passedPort;
+        addObserver(mainActivity);
         sender.setMessageToMulticast("Hi Server");
         Thread senderThread = new Thread(multicastSender);
         senderThread.start();
@@ -49,11 +53,25 @@ public class Client implements Runnable {
     @Override
     public void run() {
         String data;
+
+        // Prepare thread loop for Handler to communicate with UI thread
+        Looper.prepare();
+        Handler handler = new Handler(Looper.getMainLooper());
+
         while (true) {
             try {
                 socket = new Socket(multicastSender.getDiscoveredAddress(), port);
                 System.out.println("Socket: " + socket);
                 System.out.println("[CLIENT]Connected to Server: " + socket.getInetAddress() + ":" + socket.getPort());
+
+                // handler sends updates of successful connection to UI thread via Observer pattern
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        setChanged();
+                        notifyObservers("connected");
+                    }
+                });
 
                 printWriter = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -65,6 +83,16 @@ public class Client implements Runnable {
             } catch (SocketException e) {
                 System.out.println("Server lost.");
                 multicastSender.setDiscoveredAddress("");
+
+                // handler sends updates of failed connection to UI thread via Observer pattern
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        setChanged();
+                        notifyObservers("not connected");
+                    }
+                });
+
                 multicastSender.searchServer();
             } catch (UnknownHostException e) {
                 e.printStackTrace();

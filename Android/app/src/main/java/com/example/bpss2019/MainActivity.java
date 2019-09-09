@@ -10,7 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
+import java.util.Observable;
+import java.util.Observer;
+
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener, Observer {
 
     private ImageView fliessbandLinks;
     private ImageView fliessbandRechts;
@@ -70,13 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         rechterTrackZurueck.setOnTouchListener(this);
 
         multicastSender = new MulticastSender();
-        client = new Client(multicastSender, 5013);
+        client = new Client(multicastSender, 5013, this);
         Thread clientThread = new Thread(client);
         clientThread.start();
 
         webView.setWebViewClient(new InnerBrowser());
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://google.de");
     }
 
     private class InnerBrowser extends WebViewClient {
@@ -189,9 +191,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (!client.isIPempty()) {
             client.sendMessage(command);
 
-            webView.setWebViewClient(new InnerBrowser());
-            webView.getSettings().setJavaScriptEnabled(true);
-            webView.loadUrl("http://google.de");
+            //webView.setWebViewClient(new InnerBrowser());
+            //webView.getSettings().setJavaScriptEnabled(true);
+            //webView.loadUrl("http://google.de");
         } else {
             Toast.makeText(this, "Keine Verbindung zum Bagger", Toast.LENGTH_SHORT).show();
         }
@@ -208,6 +210,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         imageView.setImageResource(UIicon);
         if (!client.isIPempty()) {
             client.sendMessage(command);
+        }
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        // Update MainActivity as Observer of Client
+        if(o.toString().equals("connected")){
+            webView.loadUrl("http://" + client.getIP() + ":8083/javascript_simple.html");
+        } else {
+            webView.loadUrl("http://google.de");
         }
     }
 }
