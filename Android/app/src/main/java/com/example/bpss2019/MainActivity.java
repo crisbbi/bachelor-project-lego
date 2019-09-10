@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void update(Observable observable, Object o) {
         // Update MainActivity as Observer of Client
         if(o.toString().equals("connected")){
-            webView.loadUrl("http://" + client.getIP() + ":8083/javascript_simple.html");
+            webView.loadUrl("http://" + client.getIP() + ":8083/stream_simple.html");
         } else {
             webView.loadUrl("http://google.de");
         }
