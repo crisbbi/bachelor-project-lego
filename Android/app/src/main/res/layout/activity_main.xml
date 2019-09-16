@@ -46,8 +46,10 @@
         android:id="@+id/leftTrackControl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/leftControl"
-        android:layout_marginTop="350px"
+        android:layout_above="@+id/middleControl"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="175dp"
+        android:layout_marginBottom="80dp"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -74,7 +76,7 @@
 
     <LinearLayout
         android:id="@+id/middleControl"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -85,11 +87,13 @@
 
         <ImageView
             android:id="@+id/notAus"
-            android:layout_width="150px"
+            android:layout_width="1030dp"
             android:layout_height="150px"
+            android:layout_alignTop="@+id/middleControl"
             android:layout_weight="1"
             android:clickable="true"
             app:srcCompat="@drawable/notaus" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -203,6 +207,25 @@
                 android:clickable="true"
                 app:srcCompat="@drawable/armsenken_1" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="-1dp"
+        android:layout_toLeftOf="@+id/rightControl"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:paddingTop="15px"
+            android:paddingBottom="15px"
+            app:srcCompat="@drawable/web_hi_res_512" />
     </LinearLayout>
 
 </RelativeLayout>

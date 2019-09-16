@@ -1,6 +1,8 @@
 package com.example.bpss2019;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
@@ -8,8 +10,11 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private ImageView linkerTrackZurueck;
     private ImageView rechterTrackVor;
     private ImageView rechterTrackZurueck;
+    private ImageView microphone;
 
     private WebView webView;
 
@@ -55,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         linkerTrackZurueck = findViewById(R.id.leftTrackDown);
         rechterTrackVor = findViewById(R.id.rightTrackUp);
         rechterTrackZurueck = findViewById((R.id.rightTrackDown));
+        microphone = findViewById(R.id.imageView4);
 
         webView = findViewById(R.id.webView);
 
@@ -71,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         linkerTrackZurueck.setOnTouchListener(this);
         rechterTrackVor.setOnTouchListener(this);
         rechterTrackZurueck.setOnTouchListener(this);
+        microphone.setOnTouchListener(this);
 
         multicastSender = new MulticastSender();
         client = new Client(multicastSender, 5013, this);
@@ -132,6 +140,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 case R.id.armSenken:
                     changeImageSendCommand_orNotify(armSenken, R.drawable.armsenken_2, "armSenkenAN");
                     break;
+                case R.id.imageView4:
+                    Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Befehl an den Bagger:");
+                    startActivityForResult(intent, 1);
             }
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             switch (v.getId()) {
@@ -211,6 +224,45 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (!client.isIPempty()) {
             client.sendMessage(command);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 1 && resultCode == RESULT_OK) {
+            ArrayList<String> speechResult = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            ArrayList<String> commandsToSend = createCommandString(speechResult);
+            sendSpeechCommandOrNotify(commandsToSend);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private ArrayList<String> createCommandString(ArrayList<String> speechData) {
+        String commandString = speechData.get(0);
+        speechData.remove(0);
+
+        if(!speechData.isEmpty()) {
+            for (String word : speechData) {
+                commandString += " " + word;
+            }
+        }
+
+        ArrayList<String> commandList = new ArrayList<>();
+        switch (commandString) {
+            case "fahre":
+                commandList.addAll(Arrays.asList("KettelinksvorAN", "KetterechtsvorAN"));
+                break;
+        }
+        return commandList;
+    }
+
+    private void sendSpeechCommandOrNotify(ArrayList<String> commandList) {
+        if(!client.isIPempty()) {
+            for(String command: commandList) {
+                client.sendMessage(command);
+            }
+        } else {
+        Toast.makeText(this, "Keine Verbindung zum Bagger", Toast.LENGTH_SHORT).show();
+    }
     }
 
     @Override
