@@ -230,40 +230,78 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 1 && resultCode == RESULT_OK) {
             ArrayList<String> speechResult = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            ArrayList<String> commandsToSend = createCommandString(speechResult);
-            sendSpeechCommandOrNotify(commandsToSend);
+            sendCommandsFromList(speechResult);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private ArrayList<String> createCommandString(ArrayList<String> speechData) {
-        String commandString = speechData.get(0);
-        speechData.remove(0);
-
-        if(!speechData.isEmpty()) {
-            for (String word : speechData) {
-                commandString += " " + word;
+    private void sendCommandsFromList(ArrayList<String> input) {
+            System.out.println(input);
+            ArrayList<String> splitInput = new ArrayList<>();
+            for(String partOfStringList: input) {
+                splitInput.addAll(Arrays.asList(partOfStringList.split(" ")));
             }
-        }
+            System.out.println(splitInput);
+            input = splitInput;
+            System.out.println(input);
 
-        ArrayList<String> commandList = new ArrayList<>();
-        switch (commandString) {
-            case "fahre":
-                commandList.addAll(Arrays.asList("KettelinksvorAN", "KetterechtsvorAN"));
-                break;
+        if (input.contains("fahre") && ((input.contains("geradeaus")) || input.contains("vorne"))) {
+            System.out.println("*Nach vorne Fahr Gerausche*");
+            client.sendMessage("KetterechtsvorAN");
+            client.sendMessage("KettelinksvorAN");
         }
-        return commandList;
+        if (input.contains("fahre") && (input.contains("rückwärts") || input.contains("zurück"))) {
+            System.out.println("*Nach hinten Fahr Gerausche*");
+            client.sendMessage("KetterechtszurueckAN");
+            client.sendMessage("KettelinkszurueckAN");
+        }
+        if (input.contains("dich") && input.contains("links")) {
+            client.sendMessage("KetterechtsvorAN");
+            client.sendMessage("KettelinkszurueckAN");
+        }
+        if (input.contains("dich") && input.contains("rechts")) {
+            client.sendMessage("KetterechtszurueckAN");
+            client.sendMessage("KettelinksvorAN");
+        }
+        if (input.contains("turm") && input.contains("links")) {
+            client.sendMessage("BaggerarmlinksAN");
+        }
+        if (input.contains("turm") && input.contains("rechts")) {
+            client.sendMessage("BaggerarmrechtsAN");
+        }
+        if (input.contains("Schaufel") && (input.contains("oben") || input.contains("hoch") || input.contains("heben") || input.contains("höher"))) {
+            client.sendMessage("SchaufelradAUFAN");
+        }
+        if (input.contains("schaufel") && (input.contains("unten") || input.contains("runter") || input.contains("senken") || input.contains("tiefer"))) {
+            client.sendMessage("SchaufelradABAN");
+        }
+        if (input.contains("schau") && input.contains("fell") && ((input.contains("drehe") || input.contains("an"))) || input.contains("starte")) {
+            client.sendMessage("SchaufelradAN");
+        }
+        if (input.contains("schau") && input.contains("fell") && input.contains("aus") || input.contains("anhalten")) {
+            client.sendMessage("SchaufelradAUS");
+        }
+        if (input.contains("band") && input.contains("links")) {
+            client.sendMessage("FliessbandDREHENLINKS");
+        }
+        if (input.contains("band") && input.contains("rechts")) {
+            client.sendMessage("FliessbandDREHENRECHTS");
+        }
+        if (input.contains("not") && input.contains("aus")) {
+            client.sendMessage("NOTAUS");
+        }
+        if ((input.contains("stopp") || input.contains("halt") || input.contains("anhalten"))) {
+            client.sendMessage("STOPP");
+        }
+        if (input.contains("licht") && (input.contains("an") || input.contains("anschalten"))) {
+            client.sendMessage("LICHTAN");
+        }
+        if (input.contains("licht") && (input.contains("aus") || input.contains("ausschalten"))) {
+            client.sendMessage("LICHTAUS");
+        }
     }
 
-    private void sendSpeechCommandOrNotify(ArrayList<String> commandList) {
-        if(!client.isIPempty()) {
-            for(String command: commandList) {
-                client.sendMessage(command);
-            }
-        } else {
-        Toast.makeText(this, "Keine Verbindung zum Bagger", Toast.LENGTH_SHORT).show();
-    }
-    }
+
 
     @Override
     public void update(Observable observable, Object o) {
