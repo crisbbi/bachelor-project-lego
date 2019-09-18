@@ -309,7 +309,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if(o.toString().equals("connected")){
             webView.loadUrl("http://" + client.getIP() + ":8083/stream_simple.html");
         } else {
-            webView.loadUrl("http://google.de");
+            webView.loadUrl("file:///android_asset/Loading.html");
+            //webView.loadUrl("https://www.google.de/");
         }
     }
 }
