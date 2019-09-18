@@ -76,7 +76,7 @@
 
     <LinearLayout
         android:id="@+id/middleControl"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -87,7 +87,7 @@
 
         <ImageView
             android:id="@+id/notAus"
-            android:layout_width="1030dp"
+            android:layout_width="150px"
             android:layout_height="150px"
             android:layout_alignTop="@+id/middleControl"
             android:layout_weight="1"
