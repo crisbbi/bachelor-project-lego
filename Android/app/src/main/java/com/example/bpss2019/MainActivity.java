@@ -243,6 +243,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             }
             System.out.println(splitInput);
             input = splitInput;
+
+            // set all recognized words to lower case
+            for(String word: input) {
+                input.set(input.indexOf(word), word.toLowerCase());
+            }
             System.out.println(input);
 
         if (input.contains("fahre") && ((input.contains("geradeaus")) || input.contains("vorne"))) {
@@ -269,6 +274,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (input.contains("turm") && input.contains("rechts")) {
             client.sendMessage("BaggerarmrechtsAN");
         }
+        if (input.contains("turm") && input.contains("anhalten")) {
+            client.sendMessage("BaggerarmlinksAUS");
+            client.sendMessage("BaggerarmrechtsAUS");
+        }
         if (input.contains("schaufel") && (input.contains("oben") || input.contains("hoch") || input.contains("heben") || input.contains("höher"))) {
             client.sendMessage("SchaufelradAUFAN");
         }
@@ -278,14 +287,22 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (input.contains("schaufel") && ((input.contains("drehe") || input.contains("an"))) || input.contains("starte")) {
             client.sendMessage("SchaufelradAN");
         }
-        if (input.contains("schaufel") && input.contains("aus") || input.contains("anhalten")) {
+        if (input.contains("schaufel") && ((input.contains("anhalten") || input.contains("an"))) || input.contains("halt")) {
             client.sendMessage("SchaufelradAUS");
+        }
+        if (((input.contains("schaufel") && input.contains("arm")) || input.contains("schaufelarm")) && input.contains("anhalten")) {
+            client.sendMessage("SchaufelradABAUS");
+            client.sendMessage("SchaufelradAUFAUS");
         }
         if (input.contains("band") && input.contains("links")) {
             client.sendMessage("FliessbandDREHENLINKS");
         }
         if (input.contains("band") && input.contains("rechts")) {
             client.sendMessage("FliessbandDREHENRECHTS");
+        }
+        if (input.contains("band") && input.contains("anhalten")) {
+            client.sendMessage("FliessbandDrehenLinksAUS");
+            client.sendMessage("FliessbandDrehenRechtsAUS");
         }
         if (input.contains("not") && input.contains("aus")) {
             client.sendMessage("NOTAUS");
@@ -298,6 +315,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
         if (input.contains("licht") && (input.contains("aus") || input.contains("ausschalten"))) {
             client.sendMessage("LICHTAUS");
+        }
+        if (input.contains("bruder") && input.contains("an")) {
+            client.sendMessage("BRUDERAN");
+        }
+        if (input.contains("bruder") && input.contains("aus")) {
+            client.sendMessage("BRUDERAUS");
         }
     }
 
