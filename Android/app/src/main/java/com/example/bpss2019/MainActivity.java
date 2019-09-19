@@ -255,11 +255,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             client.sendMessage("KetterechtszurueckAN");
             client.sendMessage("KettelinkszurueckAN");
         }
-        if (input.contains("dich") && input.contains("links")) {
+        if (!input.contains("turm") && !input.contains("band") && input.contains("links")) {
             client.sendMessage("KetterechtsvorAN");
             client.sendMessage("KettelinkszurueckAN");
         }
-        if (input.contains("dich") && input.contains("rechts")) {
+        if (!input.contains("turm") && !input.contains("band") && input.contains("rechts")) {
             client.sendMessage("KetterechtszurueckAN");
             client.sendMessage("KettelinksvorAN");
         }
@@ -269,16 +269,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (input.contains("turm") && input.contains("rechts")) {
             client.sendMessage("BaggerarmrechtsAN");
         }
-        if (input.contains("Schaufel") && (input.contains("oben") || input.contains("hoch") || input.contains("heben") || input.contains("höher"))) {
+        if (input.contains("schaufel") && (input.contains("oben") || input.contains("hoch") || input.contains("heben") || input.contains("höher"))) {
             client.sendMessage("SchaufelradAUFAN");
         }
         if (input.contains("schaufel") && (input.contains("unten") || input.contains("runter") || input.contains("senken") || input.contains("tiefer"))) {
             client.sendMessage("SchaufelradABAN");
         }
-        if (input.contains("schau") && input.contains("fell") && ((input.contains("drehe") || input.contains("an"))) || input.contains("starte")) {
+        if (input.contains("schaufel") && ((input.contains("drehe") || input.contains("an"))) || input.contains("starte")) {
             client.sendMessage("SchaufelradAN");
         }
-        if (input.contains("schau") && input.contains("fell") && input.contains("aus") || input.contains("anhalten")) {
+        if (input.contains("schaufel") && input.contains("aus") || input.contains("anhalten")) {
             client.sendMessage("SchaufelradAUS");
         }
         if (input.contains("band") && input.contains("links")) {
