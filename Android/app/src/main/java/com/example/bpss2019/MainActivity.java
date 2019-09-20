@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (input.contains("turm") && input.contains("rechts")) {
             client.sendMessage("BaggerarmrechtsAN");
         }
-        if (input.contains("turm") && input.contains("anhalten")) {
+        if (input.contains("turm") && (input.contains("anhalten") || (input.contains("halt") && input.contains("an")))) {
             client.sendMessage("BaggerarmlinksAUS");
             client.sendMessage("BaggerarmrechtsAUS");
         }
@@ -307,7 +307,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (input.contains("not") && input.contains("aus")) {
             client.sendMessage("NOTAUS");
         }
-        if ((input.contains("stopp") || input.contains("halt") || input.contains("anhalten"))) {
+        if ((input.contains("stopp") || input.contains("halt") || input.contains("anhalten")) && !input.contains("turm")) {
             client.sendMessage("STOPP");
         }
         if (input.contains("licht") && (input.contains("an") || input.contains("anschalten"))) {
