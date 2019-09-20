@@ -330,7 +330,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void update(Observable observable, Object o) {
         // Update MainActivity as Observer of Client
         if(o.toString().equals("connected")){
-            webView.loadUrl("http://" + client.getIP() + ":8083/stream_simple.html");
+            //webView.loadUrl("http://" + client.getIP() + ":8083/stream_simple.html");
+            webView.loadUrl("http://live.daserste.de");
         } else {
             webView.loadUrl("file:///android_asset/Loading.html");
             //webView.loadUrl("https://www.google.de/");
