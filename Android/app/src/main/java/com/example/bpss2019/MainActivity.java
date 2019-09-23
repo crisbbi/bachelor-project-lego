@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     private Client client;
     private MulticastSender multicastSender;
+    private Thread clientThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         multicastSender = new MulticastSender();
         client = new Client(multicastSender, 5013, this);
-        Thread clientThread = new Thread(client);
+        clientThread = new Thread(client);
         clientThread.start();
 
         webView.setWebViewClient(new InnerBrowser());
@@ -339,8 +341,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void update(Observable observable, Object o) {
         // Update MainActivity as Observer of Client
         if(o.toString().equals("connected")){
-            //webView.loadUrl("http://" + client.getIP() + ":8083/stream_simple.html");
-            webView.loadUrl("http://live.daserste.de");
+            webView.loadUrl("http://" + client.getIP() + ":8083/stream_simple.html");
+            //webView.loadUrl("http://live.daserste.de");
         } else {
             webView.loadUrl("file:///android_asset/Loading.html");
             //webView.loadUrl("https://www.google.de/");
@@ -348,8 +350,17 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onRestart() {
+        super.onRestart();
+        multicastSender = new MulticastSender();
+        client = new Client(multicastSender, 5013, this);
+        clientThread = new Thread(client);
+        clientThread.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         client.sendMessage("DISCONNECTING");
     }
 }
