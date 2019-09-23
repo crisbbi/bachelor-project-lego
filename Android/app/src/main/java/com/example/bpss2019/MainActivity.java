@@ -42,6 +42,37 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private MulticastSender multicastSender;
     private Thread clientThread;
 
+    // commands as constants that are sent to the Server via buttons or speech
+    private static final String STOPP = "STOPP";
+    private static final String SCHAUFELRADABAN = "SchaufelradABAN";
+    private static final String SCHAUFELRADABAUS = "SchaufelradABAUS";
+    private static final String SCHAUFELRADAUFAN = "SchaufelradAUFAN";
+    private static final String SCHAUFELRADAUFAUS = "SchaufelradAUFAUS";
+    private static final String FLIESSBANDDREHENLINKS = "FliessbandDREHENLINKS";
+    private static final String FLIESSBANDDREHENLINKSAUS = "FliessbandDrehenLinksAUS";
+    private static final String FLIESSBANDDREHENRECHTS = "FliessbandDrehenRECHTS";
+    private static final String FLIESSBANDDREHENRECHTSAUS = "FliessbandDrehenRechtsAUS";
+    private static final String BAGGERARMLINKSAN = "BaggerarmlinksAN";
+    private static final String BAGGERARMLINKSAUS = "BaggerarmlinksAUS";
+    private static final String KETTELINKSVORAN = "KettelinksvorAN";
+    private static final String KETTELINKSZURUECKAN = "KettelinkszurueckAN";
+    private static final String KETTELINKSVORAUS = "KettelinksvorAUS";
+    private static final String KETTELINKSZURUECKAUS = "KettelinkszurueckAUS";
+    private static final String KETTERECHTSVORAN = "KetterechtsvorAN";
+    private static final String KETTERECHTSZURUECKAN = "KetterechtszurueckAN";
+    private static final String KETTERECHTSVORAUS = "KetterechtsvorAUS";
+    private static final String KETTERECHTSZURUECKAUS = "KetterechtszurueckAUS";
+    private static final String NOTAUS = "NOTAUS";
+    private static final String SCHAUFELRADAN = "SchaufelradAN";
+    private static final String SCHAUFELRADAUS = "SchaufelradAUS";
+    private static final String BRUDERAN = "BRUDERAN";
+    private static final String BRUDERAUS = "BRUDERAUS";
+    private static final String DISCONNECTING = "DISCONNECTING";
+    private static final String LICHTAUS = "LICHTAUS";
+    private static final String LICHTAN = "LICHTAN";
+    private static final String BAGGERARMRECHTSAN = "BaggerarmrechtsAN";
+    private static final String BAGGERARMRECHTSAUS = "BaggerarmrechtsAUS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,55 +136,55 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             switch (v.getId()) {
                 case R.id.leftTrackUp:
                     linkerTrackVor.setImageResource(R.drawable.pfeil_2);
-                    sendCommandIfConnectedOrShowToast("KettelinksvorAN");
+                    sendCommandIfConnectedOrShowToast(KETTELINKSVORAN);
                     break;
                 case R.id.leftTrackDown:
                     linkerTrackZurueck.setImageResource(R.drawable.pfeil_2);
-                    sendCommandIfConnectedOrShowToast("KettelinkszurueckAN");
+                    sendCommandIfConnectedOrShowToast(KETTELINKSZURUECKAN);
                     break;
                 case R.id.rightTrackUp:
                     rechterTrackVor.setImageResource(R.drawable.pfeil_2);
-                    sendCommandIfConnectedOrShowToast("KetterechtsvorAN");
+                    sendCommandIfConnectedOrShowToast(KETTERECHTSVORAN);
                     break;
                 case R.id.rightTrackDown:
                     rechterTrackZurueck.setImageResource(R.drawable.pfeil_2);
-                    sendCommandIfConnectedOrShowToast("KetterechtszurueckAN");
+                    sendCommandIfConnectedOrShowToast(KETTERECHTSZURUECKAN);
                     break;
                 case R.id.fliessbandLinks:
                     fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_2);
-                    sendCommandIfConnectedOrShowToast("FliessbandDREHENLINKS");
+                    sendCommandIfConnectedOrShowToast(FLIESSBANDDREHENLINKS);
                     break;
                 case R.id.fliessbandRechts:
                     fliessbandRechts.setImageResource(R.drawable.fliessbandrechts_2);
-                    sendCommandIfConnectedOrShowToast("FliessbandDREHENRECHTS");
+                    sendCommandIfConnectedOrShowToast(FLIESSBANDDREHENRECHTS);
                     break;
                 case R.id.schaufel:
                     schaufel.setImageResource(R.drawable.schaufel_2);
-                    sendCommandIfConnectedOrShowToast("SchaufelradAN");
+                    sendCommandIfConnectedOrShowToast(SCHAUFELRADAN);
                     break;
                 case R.id.licht:
                     licht.setImageResource(R.drawable.licht_2);
-                    sendCommandIfConnectedOrShowToast("LICHTAN");
+                    sendCommandIfConnectedOrShowToast(LICHTAN);
                     break;
                 case R.id.notAus:
                     notAus.setImageResource(R.drawable.notaus);
-                    sendCommandIfConnectedOrShowToast("NOTAUS");
+                    sendCommandIfConnectedOrShowToast(NOTAUS);
                     break;
                 case R.id.armDrehenUhrzeiger:
                     turmDrehenUhrzeiger.setImageResource(R.drawable.armdreheuhrzeiger_2);
-                    sendCommandIfConnectedOrShowToast("BaggerarmrechtsAN");
+                    sendCommandIfConnectedOrShowToast(BAGGERARMRECHTSAN);
                     break;
                 case R.id.armDrehenGegenUhrzeiger:
                     turmDrehenGegeneUhrzeiger.setImageResource(R.drawable.armdrehengegenuhrzeiger_2);
-                    sendCommandIfConnectedOrShowToast("BaggerarmlinksAN");
+                    sendCommandIfConnectedOrShowToast(BAGGERARMLINKSAN);
                     break;
                 case R.id.armHeben:
                     armHeben.setImageResource(R.drawable.armheben_2);
-                    sendCommandIfConnectedOrShowToast("SchaufelradAUFAN");
+                    sendCommandIfConnectedOrShowToast(SCHAUFELRADAUFAN);
                     break;
                 case R.id.armSenken:
                     armSenken.setImageResource(R.drawable.armsenken_2);
-                    sendCommandIfConnectedOrShowToast("SchaufelradABAN");
+                    sendCommandIfConnectedOrShowToast(SCHAUFELRADABAN);
                     break;
                 case R.id.imageView4:
                     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -165,54 +196,54 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             switch (v.getId()) {
                 case R.id.leftTrackUp:
                     linkerTrackVor.setImageResource(R.drawable.pfeil_1);
-                    sendCommandIfConnected("KettelinksvorAUS");
+                    sendCommandIfConnected(KETTELINKSVORAUS);
                     break;
                 case R.id.leftTrackDown:
                     linkerTrackZurueck.setImageResource(R.drawable.pfeil_1);
-                    sendCommandIfConnected("KettelinkszurueckAUS");
+                    sendCommandIfConnected(KETTELINKSZURUECKAUS);
                     break;
                 case R.id.rightTrackUp:
                     rechterTrackVor.setImageResource(R.drawable.pfeil_1);
-                    sendCommandIfConnected("KetterechtsvorAUS");
+                    sendCommandIfConnected(KETTERECHTSVORAUS);
                     break;
                 case R.id.rightTrackDown:
                     rechterTrackZurueck.setImageResource(R.drawable.pfeil_1);
-                    sendCommandIfConnected("KetterechtszurueckAUS");
+                    sendCommandIfConnected(KETTELINKSZURUECKAUS);
                     break;
                 case R.id.fliessbandLinks:
                     fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_1);
-                    sendCommandIfConnected("FliessbandDrehenLinksAUS");
+                    sendCommandIfConnected(FLIESSBANDDREHENLINKSAUS);
                     break;
                 case R.id.fliessbandRechts:
                     fliessbandRechts.setImageResource(R.drawable.fliessbandlechts_1);
-                    sendCommandIfConnected("FliessbandDrehenRechtsAUS");
+                    sendCommandIfConnected(FLIESSBANDDREHENRECHTSAUS);
                     break;
                 case R.id.schaufel:
                     schaufel.setImageResource(R.drawable.schaufel_1);
-                    sendCommandIfConnected("SchaufelradAUS");
+                    sendCommandIfConnected(SCHAUFELRADAUS);
                     break;
                 case R.id.licht:
                     licht.setImageResource(R.drawable.licht_1);
-                    sendCommandIfConnected("LICHTAUS");
+                    // TODO sendCommandIfConnected(LICHTAUS); ???
                     break;
                 case R.id.notAus:
                     notAus.setImageResource(R.drawable.notaus);
                     break;
                 case R.id.armDrehenUhrzeiger:
                     turmDrehenUhrzeiger.setImageResource(R.drawable.armdrehenuhrzeiger_1);
-                    sendCommandIfConnected("BaggerarmrechtsAUS");
+                    sendCommandIfConnected(BAGGERARMRECHTSAUS);
                     break;
                 case R.id.armDrehenGegenUhrzeiger:
                     turmDrehenGegeneUhrzeiger.setImageResource(R.drawable.armdrehengegenuhrzeiger_1);
-                    sendCommandIfConnected("BaggerarmlinksAUS");
+                    sendCommandIfConnected(BAGGERARMLINKSAUS);
                     break;
                 case R.id.armHeben:
                     armHeben.setImageResource(R.drawable.armheben_1);
-                    sendCommandIfConnected("SchaufelradABAUS");
+                    sendCommandIfConnected(SCHAUFELRADABAUS);
                     break;
                 case R.id.armSenken:
                     armSenken.setImageResource(R.drawable.armsenken_1);
-                    sendCommandIfConnected("SchaufelradAUFAUS");
+                    sendCommandIfConnected(SCHAUFELRADAUFAUS);
                     break;
             }
         }
@@ -263,75 +294,75 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         if (input.contains("fahre") && ((input.contains("geradeaus")) || input.contains("vorne"))) {
             System.out.println("*Nach vorne Fahr Gerausche*");
-            client.sendMessage("KetterechtsvorAN");
-            client.sendMessage("KettelinksvorAN");
+            client.sendMessage(KETTERECHTSVORAN);
+            client.sendMessage(KETTELINKSVORAN);
         }
         if (input.contains("fahre") && (input.contains("rückwärts") || input.contains("zurück"))) {
             System.out.println("*Nach hinten Fahr Gerausche*");
-            client.sendMessage("KetterechtszurueckAN");
-            client.sendMessage("KettelinkszurueckAN");
+            client.sendMessage(KETTERECHTSZURUECKAN);
+            client.sendMessage(KETTELINKSZURUECKAN);
         }
         if (!input.contains("turm") && !input.contains("band") && input.contains("links")) {
-            client.sendMessage("KetterechtsvorAN");
-            client.sendMessage("KettelinkszurueckAN");
+            client.sendMessage(KETTERECHTSVORAN);
+            client.sendMessage(KETTELINKSZURUECKAN);
         }
         if (!input.contains("turm") && !input.contains("band") && input.contains("rechts")) {
-            client.sendMessage("KetterechtszurueckAN");
-            client.sendMessage("KettelinksvorAN");
+            client.sendMessage(KETTERECHTSZURUECKAN);
+            client.sendMessage(KETTELINKSVORAN);
         }
         if (input.contains("turm") && input.contains("links")) {
-            client.sendMessage("BaggerarmlinksAN");
+            client.sendMessage(BAGGERARMLINKSAN);
         }
         if (input.contains("turm") && input.contains("rechts")) {
-            client.sendMessage("BaggerarmrechtsAN");
+            client.sendMessage(BAGGERARMRECHTSAN);
         }
         if (input.contains("turm") && (input.contains("anhalten") || (input.contains("halt") && input.contains("an")))) {
-            client.sendMessage("BaggerarmlinksAUS");
-            client.sendMessage("BaggerarmrechtsAUS");
+            client.sendMessage(BAGGERARMLINKSAUS);
+            client.sendMessage(BAGGERARMRECHTSAUS);
         }
         if (input.contains("schaufel") && (input.contains("oben") || input.contains("hoch") || input.contains("heben") || input.contains("höher"))) {
-            client.sendMessage("SchaufelradAUFAN");
+            client.sendMessage(SCHAUFELRADAUFAN);
         }
         if (input.contains("schaufel") && (input.contains("unten") || input.contains("runter") || input.contains("senken") || input.contains("tiefer"))) {
-            client.sendMessage("SchaufelradABAN");
+            client.sendMessage(SCHAUFELRADABAN);
         }
         if (input.contains("schaufel") && ((input.contains("drehe") || input.contains("an"))) || input.contains("starte")) {
-            client.sendMessage("SchaufelradAN");
+            client.sendMessage(SCHAUFELRADAN);
         }
         if (input.contains("schaufel") && ((input.contains("anhalten") || input.contains("an"))) || input.contains("halt")) {
-            client.sendMessage("SchaufelradAUS");
+            client.sendMessage(SCHAUFELRADAUS);
         }
         if (((input.contains("schaufel") && input.contains("arm")) || input.contains("schaufelarm")) && input.contains("anhalten")) {
-            client.sendMessage("SchaufelradABAUS");
-            client.sendMessage("SchaufelradAUFAUS");
+            client.sendMessage(SCHAUFELRADABAUS);
+            client.sendMessage(SCHAUFELRADAUFAUS);
         }
         if (input.contains("band") && input.contains("links")) {
-            client.sendMessage("FliessbandDREHENLINKS");
+            client.sendMessage(FLIESSBANDDREHENLINKS);
         }
         if (input.contains("band") && input.contains("rechts")) {
-            client.sendMessage("FliessbandDREHENRECHTS");
+            client.sendMessage(FLIESSBANDDREHENRECHTS);
         }
         if (input.contains("band") && input.contains("anhalten")) {
-            client.sendMessage("FliessbandDrehenLinksAUS");
-            client.sendMessage("FliessbandDrehenRechtsAUS");
+            client.sendMessage(FLIESSBANDDREHENLINKSAUS);
+            client.sendMessage(FLIESSBANDDREHENRECHTSAUS);
         }
         if (input.contains("not") && input.contains("aus")) {
-            client.sendMessage("NOTAUS");
+            client.sendMessage(NOTAUS);
         }
         if ((input.contains("stopp") || input.contains("halt") || input.contains("anhalten")) && !input.contains("turm")) {
-            client.sendMessage("STOPP");
+            client.sendMessage(STOPP);
         }
         if (input.contains("licht") && (input.contains("an") || input.contains("anschalten"))) {
-            client.sendMessage("LICHTAN");
+            client.sendMessage(LICHTAN);
         }
         if (input.contains("licht") && (input.contains("aus") || input.contains("ausschalten"))) {
-            client.sendMessage("LICHTAUS");
+            client.sendMessage(LICHTAUS);
         }
         if (input.contains("bruder") && input.contains("an")) {
-            client.sendMessage("BRUDERAN");
+            client.sendMessage(BRUDERAN);
         }
         if (input.contains("bruder") && input.contains("aus")) {
-            client.sendMessage("BRUDERAUS");
+            client.sendMessage(BRUDERAUS);
         }
     }
 
