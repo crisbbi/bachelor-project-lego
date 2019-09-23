@@ -337,4 +337,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             //webView.loadUrl("https://www.google.de/");
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        client.sendMessage("DISCONNECTING");
+    }
 }
