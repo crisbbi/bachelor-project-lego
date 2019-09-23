@@ -43,11 +43,13 @@ public class Client extends Observable implements Runnable {
      * Sets the message that the Client Thread shall send to the Server.
      */
     public void sendMessage(String messageToSend) {
-        CommandSender commandSender = new CommandSender(printWriter);
-        commandSender.setCommandToSend(messageToSend);
+        if(!isIPempty()) {
+            CommandSender commandSender = new CommandSender(printWriter);
+            commandSender.setCommandToSend(messageToSend);
 
-        Thread sendCommandThread = new Thread(commandSender);
-        sendCommandThread.start();
+            Thread sendCommandThread = new Thread(commandSender);
+            sendCommandThread.start();
+        }
     }
 
     @Override
@@ -64,6 +66,10 @@ public class Client extends Observable implements Runnable {
                 System.out.println("Socket: " + socket);
                 System.out.println("[CLIENT]Connected to Server: " + socket.getInetAddress() + ":" + socket.getPort());
 
+                printWriter = new PrintWriter(socket.getOutputStream(), true);
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                System.out.println("Successfully connected");
+
                 // handler sends updates of successful connection to UI thread via Observer pattern
                 handler.post(new Runnable() {
                     @Override
@@ -72,10 +78,6 @@ public class Client extends Observable implements Runnable {
                         notifyObservers("connected");
                     }
                 });
-
-                printWriter = new PrintWriter(socket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                System.out.println("Successfully connected");
 
                 while ((data = in.readLine()) != null) {
                     System.out.println(data);
