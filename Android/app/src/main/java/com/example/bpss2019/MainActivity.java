@@ -114,31 +114,31 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     changeImageSendCommand_orNotify(rechterTrackZurueck, R.drawable.pfeil_2, "KetterechtszurueckAN");
                     break;
                 case R.id.fliessbandLinks:
-                    changeImageSendCommand_orNotify(fliessbandLinks, R.drawable.fliessbandlinks_2, "fliessbandLinksAN");
+                    changeImageSendCommand_orNotify(fliessbandLinks, R.drawable.fliessbandlinks_2, "FliessbandDREHENLINKS");
                     break;
                 case R.id.fliessbandRechts:
-                    changeImageSendCommand_orNotify(fliessbandRechts, R.drawable.fliessbandrechts_2, "fliessbandRechtsAN");
+                    changeImageSendCommand_orNotify(fliessbandRechts, R.drawable.fliessbandrechts_2, "FliessbandDREHENRECHTS");
                     break;
                 case R.id.schaufel:
-                    changeImageSendCommand_orNotify(schaufel, R.drawable.schaufel_2, "schaufelAN");
+                    changeImageSendCommand_orNotify(schaufel, R.drawable.schaufel_2, "SchaufelradAN");
                     break;
                 case R.id.licht:
-                    changeImageSendCommand_orNotify(licht, R.drawable.licht_2, "lichtAN");
+                    changeImageSendCommand_orNotify(licht, R.drawable.licht_2, "LICHTAN");
                     break;
                 case R.id.notAus:
-                    changeImageSendCommand_orNotify(notAus, R.drawable.notaus, "notAUS");
+                    changeImageSendCommand_orNotify(notAus, R.drawable.notaus, "NOTAUS");
                     break;
                 case R.id.armDrehenUhrzeiger:
-                    changeImageSendCommand_orNotify(turmDrehenUhrzeiger, R.drawable.armdreheuhrzeiger_2, "armDrehenUhrzeigerAN");
+                    changeImageSendCommand_orNotify(turmDrehenUhrzeiger, R.drawable.armdreheuhrzeiger_2, "BaggerarmrechtsAN");
                     break;
                 case R.id.armDrehenGegenUhrzeiger:
-                    changeImageSendCommand_orNotify(turmDrehenGegeneUhrzeiger, R.drawable.armdrehengegenuhrzeiger_2, "armDrehenGegenUhrzeigerAN");
+                    changeImageSendCommand_orNotify(turmDrehenGegeneUhrzeiger, R.drawable.armdrehengegenuhrzeiger_2, "BaggerarmlinksAN");
                     break;
                 case R.id.armHeben:
-                    changeImageSendCommand_orNotify(armHeben, R.drawable.armheben_2, "armHebenAN");
+                    changeImageSendCommand_orNotify(armHeben, R.drawable.armheben_2, "SchaufelradAUFAN");
                     break;
                 case R.id.armSenken:
-                    changeImageSendCommand_orNotify(armSenken, R.drawable.armsenken_2, "armSenkenAN");
+                    changeImageSendCommand_orNotify(armSenken, R.drawable.armsenken_2, "SchaufelradABAN");
                     break;
                 case R.id.imageView4:
                     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -161,31 +161,31 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     changeImageSendCommand_notNotify(rechterTrackZurueck, R.drawable.pfeil_1, "KetterechtszurueckAUS");
                     break;
                 case R.id.fliessbandLinks:
-                    changeImageSendCommand_notNotify(fliessbandLinks, R.drawable.fliessbandlinks_1, "fliessbandLinksAUS");
+                    changeImageSendCommand_notNotify(fliessbandLinks, R.drawable.fliessbandlinks_1, "FliessbandDrehenLinksAUS");
                     break;
                 case R.id.fliessbandRechts:
-                    changeImageSendCommand_notNotify(fliessbandRechts, R.drawable.fliessbandlechts_1, "fliessbandRechtsAUS");
+                    changeImageSendCommand_notNotify(fliessbandRechts, R.drawable.fliessbandlechts_1, "FliessbandDrehenRechtsAUS");
                     break;
                 case R.id.schaufel:
-                    changeImageSendCommand_notNotify(schaufel, R.drawable.schaufel_1, "schaufelAUS");
+                    changeImageSendCommand_notNotify(schaufel, R.drawable.schaufel_1, "SchaufelradAUS");
                     break;
                 case R.id.licht:
-                    changeImageSendCommand_notNotify(licht, R.drawable.licht_1, "lichtAUS");
+                    changeImageSendCommand_notNotify(licht, R.drawable.licht_1, "LICHTAUS");
                     break;
                 case R.id.notAus:
                     changeImageSendCommand_notNotify(notAus, R.drawable.notaus, "notAUS");
                     break;
                 case R.id.armDrehenUhrzeiger:
-                    changeImageSendCommand_notNotify(turmDrehenUhrzeiger, R.drawable.armdrehenuhrzeiger_1, "armDrehenUhrzeigerAUS");
+                    changeImageSendCommand_notNotify(turmDrehenUhrzeiger, R.drawable.armdrehenuhrzeiger_1, "BaggerarmrechtsAUS");
                     break;
                 case R.id.armDrehenGegenUhrzeiger:
-                    changeImageSendCommand_notNotify(turmDrehenGegeneUhrzeiger, R.drawable.armdrehengegenuhrzeiger_1, "armDrehenGegenUhrzeigerAUS");
+                    changeImageSendCommand_notNotify(turmDrehenGegeneUhrzeiger, R.drawable.armdrehengegenuhrzeiger_1, "BaggerarmlinksAUS");
                     break;
                 case R.id.armHeben:
-                    changeImageSendCommand_notNotify(armHeben, R.drawable.armheben_1, "armHebenAUS");
+                    changeImageSendCommand_notNotify(armHeben, R.drawable.armheben_1, "SchaufelradABAUS");
                     break;
                 case R.id.armSenken:
-                    changeImageSendCommand_notNotify(armSenken, R.drawable.armsenken_1, "armSenkenAUS");
+                    changeImageSendCommand_notNotify(armSenken, R.drawable.armsenken_1, "SchaufelradAUFAUS");
                     break;
             }
         }
