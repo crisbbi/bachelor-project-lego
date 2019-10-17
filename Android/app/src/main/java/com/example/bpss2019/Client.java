@@ -17,11 +17,26 @@ import java.util.Observable;
  */
 public class Client extends Observable implements Runnable {
 
+    /**
+     * The Socket connection with the Server
+     */
     private Socket socket;
+
+    /**
+     * The PrintWriter that sends the commands using the Socket connection
+     */
     private PrintWriter printWriter;
     String address;
+
+    /**
+     * The port used for the Socket connection
+     */
     private int port;
     String message;
+
+    /**
+     * Discovers the Server via Multicast on the same network
+     */
     private MulticastSender multicastSender;
 
     /**
@@ -63,11 +78,13 @@ public class Client extends Observable implements Runnable {
         while (true) {
             try {
                 socket = new Socket(multicastSender.getDiscoveredAddress(), port);
+                // used for debugging
                 System.out.println("Socket: " + socket);
                 System.out.println("[CLIENT]Connected to Server: " + socket.getInetAddress() + ":" + socket.getPort());
 
                 printWriter = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                // used for debugging
                 System.out.println("Successfully connected");
 
                 // handler sends updates of successful connection to UI thread via Observer pattern
@@ -79,11 +96,14 @@ public class Client extends Observable implements Runnable {
                     }
                 });
 
+                // used for debugging
                 while ((data = in.readLine()) != null) {
                     System.out.println(data);
                 }
             } catch (SocketException e) {
                 System.out.println("Server lost.");
+                // the application relies on the multicastSender, if no "discovered" address from
+                // the Multicast exists, no commands will be sent
                 multicastSender.setDiscoveredAddress("");
 
                 // handler sends updates of failed connection to UI thread via Observer pattern
@@ -104,10 +124,19 @@ public class Client extends Observable implements Runnable {
         }
     }
 
+    /**
+     * Return whether the IP address is empty
+     *
+     * @return true, if the String isn't empty, otherwise false
+     */
     public boolean isIPempty(){
         return multicastSender.getDiscoveredAddress().equals("");
     }
 
+    /**
+     * Returns the current raw IP address
+     * @return the raw IP address
+     */
     public String getIP () {
         return multicastSender.getDiscoveredAddress();
     }
