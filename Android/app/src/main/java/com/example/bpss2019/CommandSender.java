@@ -3,11 +3,19 @@ package com.example.bpss2019;
 import java.io.PrintWriter;
 
 /**
- * CommandSender sends a command, passed from setCommandToSend(command), and sends it over a Wifi connection (attached to a PrintWriter), which is passed to the constructor.
+ * CommandSender sends a command, passed from setCommandToSend(command), and sends it over a Wifi
+ * connection (attached to a PrintWriter), which is passed to the constructor.
  */
 public class CommandSender implements Runnable {
 
+    /**
+     * The command to send
+     */
     private String commandToSend;
+
+    /**
+     * The PrintWriter that sends the commands over Wifi
+     */
     private PrintWriter printWriter;
 
     /**
