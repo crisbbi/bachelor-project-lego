@@ -26,13 +26,11 @@ public class Client extends Observable implements Runnable {
      * The PrintWriter that sends the commands using the Socket connection
      */
     private PrintWriter printWriter;
-    String address;
 
     /**
      * The port used for the Socket connection
      */
     private int port;
-    String message;
 
     /**
      * Discovers the Server via Multicast on the same network
