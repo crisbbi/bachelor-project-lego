@@ -189,10 +189,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         clientThread = new Thread(client);
         clientThread.start();
 
+        // Set up WebView to be displayed in-app and not to open an extra Browser window and support
+        // JavaScript for the camera stream.
         webView.setWebViewClient(new InnerBrowser());
         webView.getSettings().setJavaScriptEnabled(true);
     }
 
+    /**
+     * Defines an extra InnerBrowser as a WebViewClient to prevent that the app opens the standard
+     * Browser window on any device.
+     */
     private class InnerBrowser extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -321,12 +327,23 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         return true;
     }
 
+    /**
+     * Send the given command as a message via the Client if the connection to the Server exists.
+     *
+     * @param command the command to be sent as a message
+     */
     private void sendCommandIfConnected(String command) {
         if (!client.isIPempty()) {
             client.sendMessage(command);
         }
     }
 
+    /**
+     * Sends the given command if the Client is connected to the Server, otherwise show an error
+     * Toast.
+     *
+     * @param command the command to be sent as a message
+     */
     private void sendCommandIfConnectedOrShowToast(String command) {
         if (!client.isIPempty()) {
             client.sendMessage(command);
@@ -348,6 +365,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    /**
+     * Takes a list of recognized words from speech as input and sends the corresponding commands
+     * via the Client.
+     *
+     * @param input the list of recognized words from speech
+     */
     private void sendCommandsFromList(ArrayList<String> input) {
             System.out.println(input);
             ArrayList<String> splitInput = new ArrayList<>();
