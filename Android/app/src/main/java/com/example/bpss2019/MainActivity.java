@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
@@ -21,28 +20,100 @@ import java.util.Observer;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, Observer {
 
+    /**
+     * The ImageView for turning the assembly line counter clockwise
+     */
     private ImageView fliessbandLinks;
+
+    /**
+     * The ImageView for turning the assembly line clockwise
+     */
     private ImageView fliessbandRechts;
+
+    /**
+     * The ImageView for activating the paddle wheel
+     */
     private ImageView schaufel;
+
+    /**
+     * The ImageView for the light
+     */
     private ImageView licht;
+
+    /**
+     * The ImageView for the emergency stop
+     */
     private ImageView notAus;
+
+    /**
+     * The ImageView for turning the tower clockwise
+     */
     private ImageView turmDrehenUhrzeiger;
+
+    /**
+     * The ImageView for turning the tower counter clockwise
+     */
     private ImageView turmDrehenGegeneUhrzeiger;
+
+    /**
+     * The ImageView for lifting the paddle wheel
+     */
     private ImageView armHeben;
+
+    /**
+     * The ImageView for lowering the paddle wheel
+     */
     private ImageView armSenken;
+
+    /**
+     * The ImageView for moving the left track forward
+     */
     private ImageView linkerTrackVor;
+
+    /**
+     * The ImageView for moving the left track backwards
+     */
     private ImageView linkerTrackZurueck;
+
+    /**
+     * The ImageView for moving the right track forward
+     */
     private ImageView rechterTrackVor;
+
+    /**
+     * The ImageView for moving the right track backwards
+     */
     private ImageView rechterTrackZurueck;
+
+    /**
+     * The ImageView for the microphone
+     */
     private ImageView microphone;
 
+    /**
+     * Serves as the background of the application, either to load the camera stream or to display
+     * a placeholder image
+     */
     private WebView webView;
 
+    /**
+     * Delegates finding the Server and sending the commands to it
+     */
     private Client client;
+
+    /**
+     * Is responsible for finding the Server via Multicast on the same network
+     */
     private MulticastSender multicastSender;
+
+    /**
+     * Runs the Client as a separate thread to not block the main UI thread
+     */
     private Thread clientThread;
 
-    // commands as constants that are sent to the Server via buttons or speech
+    /*
+     * Commands as constants that are sent to the Server via button or speech
+     */
     private static final String STOPP = "STOPP";
     private static final String SCHAUFELRADABAN = "SchaufelradABAN";
     private static final String SCHAUFELRADABAUS = "SchaufelradABAUS";
