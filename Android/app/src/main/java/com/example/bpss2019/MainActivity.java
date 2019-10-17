@@ -368,19 +368,23 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
      * @param input the list of recognized words from speech
      */
     private void sendCommandsFromList(ArrayList<String> input) {
-            System.out.println(input);
-            ArrayList<String> splitInput = new ArrayList<>();
-            for(String partOfStringList: input) {
-                splitInput.addAll(Arrays.asList(partOfStringList.split(" ")));
-            }
-            System.out.println(splitInput);
-            input = splitInput;
+        // used for debugging
+        System.out.println(input);
 
-            // set all recognized words to lower case
-            for(String word: input) {
-                input.set(input.indexOf(word), word.toLowerCase());
-            }
-            System.out.println(input);
+        // store every single recognized word possible in a new list
+        ArrayList<String> splitInput = new ArrayList<>();
+        for(String partOfStringList: input) {
+            splitInput.addAll(Arrays.asList(partOfStringList.split(" ")));
+        }
+        // used for debugging
+        System.out.println(splitInput);
+        input = splitInput;
+
+        // set all recognized words to lower case
+        for(String word: input) {
+            input.set(input.indexOf(word), word.toLowerCase());
+        }
+        System.out.println(input);
 
         if (input.contains("fahre") && ((input.contains("geradeaus")) || input.contains("vorne"))) {
             System.out.println("*Nach vorne Fahr Gerausche*");
@@ -455,8 +459,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             client.sendMessage(BRUDERAUS);
         }
     }
-
-
 
     @Override
     public void update(Observable observable, Object o) {
