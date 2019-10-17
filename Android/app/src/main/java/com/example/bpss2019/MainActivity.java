@@ -285,7 +285,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     break;
                 case R.id.rightTrackDown:
                     rechterTrackZurueck.setImageResource(R.drawable.pfeil_1);
-                    sendCommandIfConnected(KETTELINKSZURUECKAUS);
+                    sendCommandIfConnected(KETTERECHTSZURUECKAUS);
                     break;
                 case R.id.fliessbandLinks:
                     fliessbandLinks.setImageResource(R.drawable.fliessbandlinks_1);
