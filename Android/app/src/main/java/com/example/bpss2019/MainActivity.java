@@ -347,10 +347,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void sendCommandIfConnectedOrShowToast(String command) {
         if (!client.isIPempty()) {
             client.sendMessage(command);
-
-            //webView.setWebViewClient(new InnerBrowser());
-            //webView.getSettings().setJavaScriptEnabled(true);
-            //webView.loadUrl("http://google.de");
         } else {
             Toast.makeText(this, "Keine Verbindung zum Bagger", Toast.LENGTH_SHORT).show();
         }
