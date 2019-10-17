@@ -14,10 +14,29 @@ import java.util.Arrays;
  */
 public class MulticastSender implements Runnable {
 
+    /**
+     * The UDP Socket for the Multicast.
+     */
     private DatagramSocket datagramSocket;
+
+    /**
+     * The Multicast address group, where the Server listens for the Multicast.
+     */
     private InetAddress multicastGroup;
+
+    /**
+     * The message sent via Multicast that finds the correct Server like a handshake.
+     */
     private byte[] message;
+
+    /**
+     * The address to locate the devices that respond to Multicast.
+     */
     private String multicastAddress = "224.0.0.1";
+
+    /**
+     * The Server IP address.
+     */
     private String serverIP = "";
 
     /**
@@ -39,7 +58,7 @@ public class MulticastSender implements Runnable {
     }
 
     /**
-     * Searches the Server using multicastAddress.
+     * Searches the Server using UDP and checks for a correct response.
      */
     public void searchServer() {
         try {
@@ -53,14 +72,16 @@ public class MulticastSender implements Runnable {
 
         DatagramPacket udpPacket = new DatagramPacket(message, message.length, multicastGroup, 5012);
         while (true) {
-            // send multicast
+            //used for debugging
             System.out.println("Send packet with message \"" + Arrays.toString(message) + "\"");
+            // send multicast
             try {
                 datagramSocket.send(udpPacket);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
+            // used for debugging
             System.out.println("Wait for reply...");
 
             byte[] answer = new byte[256];
@@ -69,11 +90,13 @@ public class MulticastSender implements Runnable {
             try {
                 datagramSocket.setSoTimeout(1000);
                 datagramSocket.receive(receivePacket);
+                //used for debugging
                 System.out.println("Multicast response from server: " + receivePacket.getAddress().getHostAddress());
 
                 String message = new String(receivePacket.getData()).trim();
 
                 if (message.equals("Hi Client")) {
+                    // used for debugging
                     System.out.println("Server is located at: " + receivePacket.getAddress().getHostAddress());
                     serverIP = receivePacket.getAddress().getHostAddress();
                     break;
@@ -106,6 +129,11 @@ public class MulticastSender implements Runnable {
         searchServer();
     }
 
+    /**
+     * Return the Server IP address.
+     *
+     * @return the Server IP address
+     */
     public String getIP () {
         return serverIP;
     }
